@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html lang="en"
+        xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/commons::head"></head>
 <body>
-
+    <header th:replace="fragments/commons::header"></header>
+    <main>
+        <div class="hero">
+            <h1>Welcome to Mythic Mastery</h1>
+            <p>Manage your characters, campaigns, items, monsters, and quests all in one place!</p>
+            <a th:href="@{/login}">Log In</a>
+            <a th:href="@{/register}">Register</a>
+        </div>
+    </main>
+    <footer th:replace="fragments/commons :: footer"></footer>
 </body>
 </html>
