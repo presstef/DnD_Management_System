@@ -7,8 +7,8 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-@Table(name="characters")
-public class Character {
+@Table(name="quests")
+public class Quest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,24 +17,20 @@ public class Character {
     private String name;
 
     @Column(nullable = false)
-    private String race;
+    private String description;
 
     @Column(nullable = false)
-    private String characterClass;
-
-    private int level;
-    private int strength;
-    private int dexterity;
-    private int constitution;
-    private int intelligence;
-    private int wisdom;
-    private int charisma;
+    private String status;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Character() {
+    @ManyToOne
+    @JoinColumn(name = "campaign_id")
+    private Campaign campaign;
+
+    public Quest() {
     }
 
 }

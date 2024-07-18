@@ -4,11 +4,13 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Setter
 @Getter
 @Entity
-@Table(name="characters")
-public class Character {
+@Table(name="campaigns")
+public class Campaign {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,24 +19,16 @@ public class Character {
     private String name;
 
     @Column(nullable = false)
-    private String race;
-
-    @Column(nullable = false)
-    private String characterClass;
-
-    private int level;
-    private int strength;
-    private int dexterity;
-    private int constitution;
-    private int intelligence;
-    private int wisdom;
-    private int charisma;
+    private String description;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Character() {
+    @OneToMany(mappedBy = "campaign", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Character> characters;
+
+    public Campaign() {
     }
 
 }

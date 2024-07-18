@@ -1,5 +1,6 @@
 package fp.dndmanagementsystem.model.entity;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -7,8 +8,8 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-@Table(name="characters")
-public class Character {
+@Table(name="items")
+public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,24 +18,16 @@ public class Character {
     private String name;
 
     @Column(nullable = false)
-    private String race;
-
-    @Column(nullable = false)
-    private String characterClass;
-
-    private int level;
-    private int strength;
-    private int dexterity;
-    private int constitution;
-    private int intelligence;
-    private int wisdom;
-    private int charisma;
+    private String description;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Character() {
-    }
+    @ManyToOne
+    @JoinColumn(name = "character_id")
+    private Character character;
 
+    public Item() {
+    }
 }
