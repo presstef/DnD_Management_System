@@ -11,13 +11,7 @@ import java.util.Set;
 @Getter
 @Entity
 @Table(name="spells")
-public class Spell {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(nullable = false)
-    private String name;
+public class SpellEntity extends BaseEntity{
 
     @Column(nullable = false)
     private String description;
@@ -31,9 +25,9 @@ public class Spell {
     private int castingTime;
 
     @ManyToMany(mappedBy = "spells")
-    private Set<Character> characters;
+    private Set<CharacterEntity> characters;
 
-    public Spell() {
+    public SpellEntity() {
         characters = new HashSet<>();
     }
 }

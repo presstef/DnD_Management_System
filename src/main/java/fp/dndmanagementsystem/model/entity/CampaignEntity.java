@@ -11,32 +11,26 @@ import java.util.Set;
 @Getter
 @Entity
 @Table(name="campaigns")
-public class Campaign {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(nullable = false)
-    private String name;
+public class CampaignEntity extends BaseEntity{
 
     private String description;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User dungeonMaster;
+    private UserEntity dungeonMaster;
 
     @OneToMany
     @JoinColumn(name = "campaign_id")
-    private Set<Character> characters;
+    private Set<CharacterEntity> characters;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "campaigns_monsters",
             joinColumns = @JoinColumn(name = "campaign_id"),
             inverseJoinColumns = @JoinColumn(name = "monster_id"))
-    private Set<Monster> monsters;
+    private Set<MonsterEntity> monsters;
 
-    public Campaign() {
+    public CampaignEntity() {
         characters = new HashSet<>();
         monsters = new HashSet<>();
     }

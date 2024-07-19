@@ -11,13 +11,7 @@ import java.util.Set;
 @Getter
 @Entity
 @Table(name="monsters")
-public class Monster {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(nullable = false)
-    private String name;
+public class MonsterEntity extends BaseEntity {
 
     @Column(nullable = false)
     private String type;
@@ -37,9 +31,9 @@ public class Monster {
     private double challengeRating;
 
     @ManyToMany(mappedBy = "monsters")
-    private Set<Campaign> campaigns;
+    private Set<CampaignEntity> campaigns;
 
-    public Monster() {
+    public MonsterEntity() {
         campaigns = new HashSet<>();
     }
 }

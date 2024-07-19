@@ -11,7 +11,7 @@ import java.util.Set;
 @Getter
 @Entity
 @Table(name="users")
-public class User {
+public class UserEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,12 +26,12 @@ public class User {
     private Role role;
 
     @OneToMany(mappedBy = "user")
-    private Set<Character> characters;
+    private Set<CharacterEntity> characters;
 
     @OneToMany(mappedBy = "dungeonMaster")
-    private Set<Campaign> campaigns;
+    private Set<CampaignEntity> campaigns;
 
-    public User() {
+    public UserEntity() {
         this.characters = new HashSet<>();
         this.campaigns = new HashSet<>();
     }

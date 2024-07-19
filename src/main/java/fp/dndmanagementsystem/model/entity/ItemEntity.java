@@ -12,13 +12,7 @@ import java.util.Set;
 @Getter
 @Entity
 @Table(name="items")
-public class Item {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(nullable = false)
-    private String name;
+public class ItemEntity extends BaseEntity {
 
     @Column(nullable = false)
     private String description;
@@ -27,13 +21,13 @@ public class Item {
     private String category;
 
     @ManyToMany(mappedBy =  "items")
-    private Set<Character> character;
+    private Set<CharacterEntity> characters;
 
     private double price;
 
     private double weight;
 
-    public Item() {
-        character = new HashSet<>();
+    public ItemEntity() {
+        characters = new HashSet<>();
     }
 }

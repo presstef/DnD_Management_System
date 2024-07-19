@@ -10,14 +10,7 @@ import java.util.Set;
 @Getter
 @Entity
 @Table(name="characters")
-public class Character {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(nullable = false)
-    private String name;
-
+public class CharacterEntity extends BaseEntity{
     @Column(nullable = false)
     private String race;
 
@@ -44,27 +37,27 @@ public class Character {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private UserEntity user;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "characters_spells",
             joinColumns = @JoinColumn(name = "character_id"),
             inverseJoinColumns = @JoinColumn(name = "spell_id"))
-    private Set<Spell> spells;
+    private Set<SpellEntity> spells;
 
     @ManyToOne
     @JoinColumn(name = "campaign_id")
-    private Campaign campaign;
+    private CampaignEntity campaign;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "characters_items",
             joinColumns = @JoinColumn(name = "character_id"),
             inverseJoinColumns = @JoinColumn(name = "item_id"))
-    private Set<Item> items;
+    private Set<ItemEntity> items;
 
-    public Character() {
+    public CharacterEntity() {
     }
 
 }
