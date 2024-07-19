@@ -5,6 +5,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Setter
 @Getter
 @Entity
@@ -20,14 +23,17 @@ public class Item {
     @Column(nullable = false)
     private String description;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @Column(nullable = false)
+    private String category;
 
-    @ManyToOne
-    @JoinColumn(name = "character_id")
-    private Character character;
+    @ManyToMany(mappedBy =  "items")
+    private Set<Character> character;
+
+    private double price;
+
+    private double weight;
 
     public Item() {
+        character = new HashSet<>();
     }
 }

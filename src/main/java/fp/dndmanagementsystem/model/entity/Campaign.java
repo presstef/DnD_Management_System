@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Setter
@@ -18,17 +19,26 @@ public class Campaign {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
     private String description;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private User dungeonMaster;
 
-    @OneToMany(mappedBy = "campaign", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany
+    @JoinColumn(name = "campaign_id")
     private Set<Character> characters;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "campaigns_monsters",
+            joinColumns = @JoinColumn(name = "campaign_id"),
+            inverseJoinColumns = @JoinColumn(name = "monster_id"))
+    private Set<Monster> monsters;
+
     public Campaign() {
+        characters = new HashSet<>();
+        monsters = new HashSet<>();
     }
 
 }

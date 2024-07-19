@@ -23,26 +23,17 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false, unique = true)
-    private String email;
-
-    @Column(nullable = false)
-    private boolean enabled;
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "users_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
-    )
-    private Set<Role> roles;
+    private Role role;
 
     @OneToMany(mappedBy = "user")
     private Set<Character> characters;
 
+    @OneToMany(mappedBy = "dungeonMaster")
+    private Set<Campaign> campaigns;
+
     public User() {
-        this.roles = new HashSet<>();
         this.characters = new HashSet<>();
+        this.campaigns = new HashSet<>();
     }
 
 }

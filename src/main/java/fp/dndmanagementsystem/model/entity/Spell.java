@@ -4,11 +4,14 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Setter
 @Getter
 @Entity
-@Table(name="quests")
-public class Quest {
+@Table(name="spells")
+public class Spell {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,18 +22,18 @@ public class Quest {
     @Column(nullable = false)
     private String description;
 
-    @Column(nullable = false)
-    private String status;
+    private boolean concentration;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    private int level;
 
-    @ManyToOne
-    @JoinColumn(name = "campaign_id")
-    private Campaign campaign;
+    private String damageType;
 
-    public Quest() {
+    private int castingTime;
+
+    @ManyToMany(mappedBy = "spells")
+    private Set<Character> characters;
+
+    public Spell() {
+        characters = new HashSet<>();
     }
-
 }
