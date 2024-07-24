@@ -1,6 +1,7 @@
 package fp.dndmanagementsystem.model.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,6 +24,9 @@ public class UserEntity{
     @Column(nullable = false)
     private String password;
 
+    @NotNull
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "role_id", referencedColumnName = "id")
     private Role role;
 
     @OneToMany(mappedBy = "user")
