@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/commons::head"></head>
+<head th:replace="fragments/commons::head">
+  <title>Mythic Mastery</title>
+</head>
 
 <body>
 
@@ -10,8 +12,8 @@
 <div class="container">
   <h2 class="text-center text-white">Register User</h2>
   <form th:method="POST"
-        th:action="@{users/register}"
-        th:object="${users/registerData}"
+        th:action="@{register}"
+        th:object="${registerData}"
         class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center">
     <div class="row">
       <div class="form-group col-md-6 mb-3">
@@ -25,12 +27,14 @@
       </div>
       <div class="form-group col-md-6 mb-3">
         <label th:for="password" class="text-white font-weight-bold">Password</label>
-        <input
-                th:field="*{password}"
-                type="password"
-                class="form-control"
-                name="password"
-                placeholder="Password"/>
+        <label>
+          <input
+                  th:field="*{password}"
+                  type="password"
+                  class="form-control"
+                  name="password"
+                  placeholder="Password"/>
+        </label>
         <!--                <p class="errors alert alert-danger">-->
         <!--                    Password is required.-->
         <!--                </p>-->
