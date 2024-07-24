@@ -1,7 +1,10 @@
 package fp.dndmanagementsystem.config;
 
+import fp.dndmanagementsystem.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.MediaType;
+import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.web.client.RestClient;
 
 @Configuration
@@ -12,11 +15,11 @@ public class RestConfig {
     }
 
     @Bean("campaignsRestClient")
-    public RestClient campaignsRestClient(OfferApiConfig offersApiConfig,
+    public RestClient campaignsRestClient(CampaignApiConfig campaignApiConfig,
                                        ClientHttpRequestInterceptor requestInterceptor) {
         return RestClient
                 .builder()
-                .baseUrl(offersApiConfig.getBaseUrl())
+                .baseUrl(campaignApiConfig.getBaseUrl())
                 .defaultHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
                 .requestInterceptor(requestInterceptor)
                 .build();
@@ -26,7 +29,6 @@ public class RestConfig {
     public ClientHttpRequestInterceptor requestInterceptor(UserService userService,
                                                            JwtService jwtService) {
         return (r, b, e) -> {
-            // put the logged user details into bearer token
             userService
                     .getCurrentUser()
                     .ifPresent(mud -> {
