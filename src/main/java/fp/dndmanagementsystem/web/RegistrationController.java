@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-//@RequestMapping("/users")
+@RequestMapping("/users")
 public class RegistrationController {
 
     private final UserService userService;
