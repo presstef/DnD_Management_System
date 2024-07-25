@@ -13,9 +13,8 @@ public class ApiConfig {
         return this.url;
     }
 
-    public ApiConfig setUrl(String url) {
+    public void setUrl() {
         this.url = url;
-        return this;
     }
 
     @PostConstruct

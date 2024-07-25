@@ -31,9 +31,11 @@ public class MonsterServiceImpl implements MonsterService {
 
     @Override
     public MonsterApiDTO fetchMonsters() {
+        String url = this.apiConfig.getUrl() + "monsters/?name=";
+
         return restClient
                 .get()
-                .uri(apiConfig.getUrl())
+                .uri(url)
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
                 .body(MonsterApiDTO.class);

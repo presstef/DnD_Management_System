@@ -35,6 +35,8 @@ server:
   dnd5eapi:
     api:
       url: "https://www.dnd5eapi.co/api/:endpoint"
-    init-monsters: ${INIT_EX_RATES:false}
+    init-monsters: ${INIT_MONSTERS:false}
 
-
+  campaigns:
+    api:
+      baseUrl: "${CAMPAIGNS_BASE_URL:http://localhost:8081}"
