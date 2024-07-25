@@ -10,11 +10,12 @@ public class ApiConfig {
     private String url;
 
     public String getUrl() {
-        return this.url;
+        return url = "https://www.dnd5eapi.co/api/";
     }
 
-    public void setUrl() {
-        this.url = url;
+    public ApiConfig setUrl(String url) {
+        this.url = "https://www.dnd5eapi.co/api/";
+        return this;
     }
 
     @PostConstruct

@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 @Component
-//@ConditionalOnProperty(name = "forex.init-ex-rates", havingValue = "true")
+@ConditionalOnProperty(name = "dnd5eapi.init-monsters", havingValue = "true")
 public class MonstersInitializer implements CommandLineRunner {
     private final MonsterService monsterService;
 

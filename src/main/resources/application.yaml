@@ -1,42 +1,83 @@
+#spring:
+#  jpa:
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.MySQL8Dialect
+#        format_sql: 'TRUE'
+#    hibernate:
+#      ddl-auto: update
+#    open-in-view: 'false'
+#  mvc:
+#    hiddenmethod:
+#      filter:
+#        enabled: 'true'
+#  datasource:
+#    driverClassName: com.mysql.cj.jdbc.Driver
+#    password: root
+#    username: root
+#    url: jdbc:mysql://localhost:3306/dndManagementSystem?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
+#  security:
+#    user:
+#      name: user
+#      password: pass
+#logging:
+#  level:
+#    org:
+#      hibernate:
+#        type:
+#          descriptor: TRACE
+#        SQL: DEBUG
+#      nodeValue: WARN
+#    blog: WARN
+#server:
+#  port: 8080
+#
+#  dnd5eapi:
+#    api:
+#      url: "https://www.dnd5eapi.co/api/"
+#      init-monsters: ${INIT_MONSTERS:false}
+#
+##TODO
+##  campaigns:
+##    api:
+##      baseUrl: "${CAMPAIGNS_BASE_URL:http://localhost:8081}"
+
 spring:
+  application:
+    name: dndManagement
+  #  thymeleaf:
+  #    check-template-location: true
+  #    cache: false
+  #    prefix: file:./src/main/resources/templates/
+  #server:
+  #  port: 8081
+  datasource:
+#    TODO
+      driverClassName: com.mysql.cj.jdbc.Driver
+      password: root
+      username: root
+      url: jdbc:mysql://localhost:3306/dndManagementSystem?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
   jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    defer-datasource-initialization: true
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
-        format_sql: 'TRUE'
+        format_sql: true
     hibernate:
       ddl-auto: update
-    open-in-view: 'false'
+  sql:
+    init:
+      mode: never
   mvc:
     hiddenmethod:
       filter:
-        enabled: 'true'
-  datasource:
-    driverClassName: com.mysql.cj.jdbc.Driver
-    password: root
-    username: root
-    url: jdbc:mysql://localhost:3306/dndManagementSystem?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
-  security:
-    user:
-      name: user
-      password: pass
-logging:
-  level:
-    org:
-      hibernate:
-        type:
-          descriptor: TRACE
-        SQL: DEBUG
-      nodeValue: WARN
-    blog: WARN
-server:
-  port: 8080
+        enabled: true
 
-  dnd5eapi:
-    api:
-      url: "https://www.dnd5eapi.co/api/:endpoint"
-    init-monsters: ${INIT_MONSTERS:false}
+dnd5eapi:
+  api:
+    url: "https://www.dnd5eapi.co/api/"
+  init-monsters: ${INIT_MONSTERS:false}
 
-  campaigns:
-    api:
-      baseUrl: "${CAMPAIGNS_BASE_URL:http://localhost:8081}"
+#offers:
+#  api:
+#    baseUrl: "${OFFERS_BASE_URL:http://localhost:8081}"
