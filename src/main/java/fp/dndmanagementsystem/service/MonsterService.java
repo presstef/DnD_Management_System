@@ -1,9 +1,17 @@
 package fp.dndmanagementsystem.service;
 
-import fp.dndmanagementsystem.model.dto.MonsterApiDTO;
+import fp.dndmanagementsystem.model.dto.MonstersDTO;
+
+import java.util.List;
 
 public interface MonsterService {
-    MonsterApiDTO fetchMonsters();
-    void updateMonsters(MonsterApiDTO monsterApiDTO);
+    List<String> allAvailableMonsters();
     boolean hasInitializedMonsters();
+
+    List<MonstersDTO> fetchMonsters();
+
+    void updateMonsters(List<MonstersDTO> monsters);
+
+    //Optional<String> findMonster(String name);
+
 }

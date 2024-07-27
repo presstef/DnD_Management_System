@@ -1,50 +1,6 @@
-#spring:
-#  jpa:
-#    properties:
-#      hibernate:
-#        dialect: org.hibernate.dialect.MySQL8Dialect
-#        format_sql: 'TRUE'
-#    hibernate:
-#      ddl-auto: update
-#    open-in-view: 'false'
-#  mvc:
-#    hiddenmethod:
-#      filter:
-#        enabled: 'true'
-#  datasource:
-#    driverClassName: com.mysql.cj.jdbc.Driver
-#    password: root
-#    username: root
-#    url: jdbc:mysql://localhost:3306/dndManagementSystem?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
-#  security:
-#    user:
-#      name: user
-#      password: pass
-#logging:
-#  level:
-#    org:
-#      hibernate:
-#        type:
-#          descriptor: TRACE
-#        SQL: DEBUG
-#      nodeValue: WARN
-#    blog: WARN
-#server:
-#  port: 8080
-#
-#  dnd5eapi:
-#    api:
-#      url: "https://www.dnd5eapi.co/api/"
-#      init-monsters: ${INIT_MONSTERS:false}
-#
-##TODO
-##  campaigns:
-##    api:
-##      baseUrl: "${CAMPAIGNS_BASE_URL:http://localhost:8081}"
-
 spring:
   application:
-    name: dndManagement
+    name: DnDManagementSystem
   #  thymeleaf:
   #    check-template-location: true
   #    cache: false
@@ -52,11 +8,10 @@ spring:
   #server:
   #  port: 8081
   datasource:
-#    TODO
-      driverClassName: com.mysql.cj.jdbc.Driver
-      password: root
-      username: root
-      url: jdbc:mysql://localhost:3306/dndManagementSystem?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/dndManagementSystem?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
+    username: root
+    password: root
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
     defer-datasource-initialization: true
@@ -72,12 +27,14 @@ spring:
     hiddenmethod:
       filter:
         enabled: true
-
+  spring:
+    autoconfigure:
+      exclude=org:
+        springframework:
+          boot:
+            autoconfigure:
+              security:
+                SecurityAutoConfiguration:
 dnd5eapi:
   api:
-    url: "https://www.dnd5eapi.co/api/"
-  init-monsters: ${INIT_MONSTERS:false}
-
-#offers:
-#  api:
-#    baseUrl: "${OFFERS_BASE_URL:http://localhost:8081}"
+    url: "https://www.dnd5eapi.co/api"

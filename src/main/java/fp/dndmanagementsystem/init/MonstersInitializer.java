@@ -5,8 +5,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
+
 @Component
-@ConditionalOnProperty(name = "dnd5eapi.init-monsters", havingValue = "true")
+//@ConditionalOnProperty(name = "dnd5eapi.init-monsters", havingValue = "true")
 public class MonstersInitializer implements CommandLineRunner {
     private final MonsterService monsterService;
 
@@ -15,7 +17,7 @@ public class MonstersInitializer implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) throws IOException {
         if (!monsterService.hasInitializedMonsters()) {
             monsterService.updateMonsters(
                     monsterService.fetchMonsters()

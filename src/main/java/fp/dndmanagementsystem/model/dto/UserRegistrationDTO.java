@@ -2,11 +2,7 @@ package fp.dndmanagementsystem.model.dto;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 public class UserRegistrationDTO {
     @NotEmpty
     @Size(min = 5, max = 20)
@@ -14,6 +10,22 @@ public class UserRegistrationDTO {
 
     @NotEmpty
     private String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword (String password) {
+        this.password = password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername (String username) {
+        this.username = username;
+    }
 
     @Override
     public String toString() {

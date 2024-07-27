@@ -1,43 +1,64 @@
 package fp.dndmanagementsystem.model.entity;
 
+import com.fasterxml.jackson.databind.ser.Serializers;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import lombok.Getter;
-import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-@Setter
-@Getter
 @Entity
 @Table(name="users")
-public class UserEntity{
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(nullable = false, unique = true)
-    private String username;
+public class UserEntity extends BaseEntity {
 
     @Column(nullable = false)
     private String password;
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "role_id", referencedColumnName = "id")
-    private Role role;
-
     @OneToMany(mappedBy = "user")
-    private Set<CharacterEntity> characters;
+    private List<CharacterEntity> characters;
+
+    @ManyToMany(mappedBy = "participants")
+    private List<CampaignEntity> campaigns;
 
     @OneToMany(mappedBy = "dungeonMaster")
-    private Set<CampaignEntity> campaigns;
+    private List<CampaignEntity> managedCampaigns;
 
     public UserEntity() {
-        this.characters = new HashSet<>();
-        this.campaigns = new HashSet<>();
+        this.characters = new ArrayList<>();
+        this.campaigns = new ArrayList<>();
+        this.managedCampaigns = new ArrayList<>();
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public List<CharacterEntity> getCharacters() {
+        return characters;
+    }
+
+    public void setCharacters(List<CharacterEntity> characters) {
+        this.characters = characters;
+    }
+
+    public List<CampaignEntity> getCampaigns() {
+        return campaigns;
+    }
+
+    public void setCampaigns(List<CampaignEntity> campaigns) {
+        this.campaigns = campaigns;
+    }
+
+    public List<CampaignEntity> getManagedCampaigns() {
+        return managedCampaigns;
+    }
+
+    public void setManagedCampaigns(List<CampaignEntity> managedCampaigns) {
+        this.managedCampaigns = managedCampaigns;
+    }
 }

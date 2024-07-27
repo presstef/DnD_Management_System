@@ -1,10 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>MobiLeLeLe</title>
+    <link rel="stylesheet" href="/css/reset-css.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+    <script src="/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 </head>
+
 <body>
+
+<div th:replace="~{fragments/navbar::navbar(activeLink=${'add-campaign'})}"></div>
+
+<div class="container">
+    <h2 class="text-center text-white">Create Campaign</h2>
+    <form
+            th:action="@{/campaign/add}"
+            th:method="post"
+            th:object="${addCampaignDTO}"
+            class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center">
+        <div class="row">
+            <div class="form-group">
+                <label class="text-white font-weight-bold" th:for="name">Campaign name</label>
+                <textarea
+                        th:field="*{name}"
+                        th:errorclass="is-invalid"
+                        type="textarea"
+                        class="form-control"
+                        rows="3"
+                        placeholder="CampaignName">
+                 </textarea>
+                <p class="invalid-feedback errors alert alert-danger">
+                    Campaign name is required and should be at least 5 symbols.
+                </p>
+                <!--            <small th:each="err : ${#fields.errors('description')}" th:text="${err}" class="text-danger"></small>-->
+
+                <!--            Alternative error display-->
+                <!--            <small th:errors="*{description}" class="text-danger">Description error-->
+                <!--            </small>-->
+            </div>
+        </div>
+        <div class="row">
+        <div class="form-group">
+            <label class="text-white font-weight-bold" th:for="description">Description</label>
+            <textarea
+                    th:field="*{description}"
+                    th:errorclass="is-invalid"
+                    type="textarea"
+                    class="form-control"
+                    rows="3"
+                    placeholder="Description">
+            </textarea>
+            <p class="invalid-feedback errors alert alert-danger">
+                Description is required and should be at least 5 symbols.
+            </p>
+
+            <!--            <small th:each="err : ${#fields.errors('description')}" th:text="${err}" class="text-danger"></small>-->
+
+            <!--            Alternative error display-->
+            <!--            <small th:errors="*{description}" class="text-danger">Description error-->
+            <!--            </small>-->
+
+
+        </div>
+        </div>
+<!--        <div class="row">-->
+<!--            <div class="form-group">-->
+<!--                <label class="text-white font-weight-bold" th:for="dungeonMaster">Dungeon master</label>-->
+<!--                <textarea-->
+<!--                        th:field="*{dungeonMaster}"-->
+<!--                        th:errorclass="is-invalid"-->
+<!--                        type="textarea"-->
+<!--                        class="form-control"-->
+<!--                        rows="3"-->
+<!--                        placeholder="Description">-->
+<!--            </textarea>-->
+<!--                <p class="invalid-feedback errors alert alert-danger">-->
+<!--                    Description is required and should be at least 5 symbols.-->
+<!--                </p>-->
+
+<!--                &lt;!&ndash;            <small th:each="err : ${#fields.errors('description')}" th:text="${err}" class="text-danger"></small>&ndash;&gt;-->
+
+<!--                &lt;!&ndash;            Alternative error display&ndash;&gt;-->
+<!--                &lt;!&ndash;            <small th:errors="*{description}" class="text-danger">Description error&ndash;&gt;-->
+<!--                &lt;!&ndash;            </small>&ndash;&gt;-->
+
+
+<!--            </div>-->
+<!--        </div>-->
+        <div class="row">
+            <div class="col col-md-4">
+                <div class="button-holder d-flex">
+                    <input type="submit" class="btn btn-info btn-lg" value="Submit Campaign"/>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div>
+    <footer> </footer>
+</div>
 
 </body>
 </html>
