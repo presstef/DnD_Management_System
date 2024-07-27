@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>MobiLeLeLe</title>
+    <title>Mythic Mastery</title>
     <link rel="stylesheet" href="/css/reset-css.css"/>
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="/css/main.css"/>
@@ -17,10 +17,8 @@
 
 
 <div class="container-fluid">
-    <h5 class="text-center text-white mt-5">Welcome to MobiLeLeLe,
-        <th:block th:if="${@currentUser.isLoggedIn()}" th:text="${@currentUser.getFullName()}"></th:block>
-        <th:block th:unless="${@currentUser.isLoggedIn()}">Anonymous</th:block>
-        !
+    <h5 class="text-center text-white mt-5">Mythic Mastery,
+        <th:block th:text="${welcomeMessage}"></th:block>!
     </h5>
 </div>
 

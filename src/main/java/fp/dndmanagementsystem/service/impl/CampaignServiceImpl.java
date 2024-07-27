@@ -5,7 +5,6 @@ import fp.dndmanagementsystem.model.dto.CampaignDetailsDTO;
 import fp.dndmanagementsystem.model.dto.CampaignSummaryDTO;
 import fp.dndmanagementsystem.model.entity.CampaignEntity;
 import fp.dndmanagementsystem.repo.CampaignRepository;
-import fp.dndmanagementsystem.service.CurrentUser;
 import fp.dndmanagementsystem.service.MonsterService;
 import org.springframework.stereotype.Service;
 import fp.dndmanagementsystem.service.CampaignService;
@@ -17,12 +16,10 @@ public class CampaignServiceImpl implements CampaignService{
 
     private final CampaignRepository campaignRepository;
     private final MonsterService monsterService;
-    private final CurrentUser currentUser;
 
-    public CampaignServiceImpl(CampaignRepository campaignRepository, MonsterService monsterService, CurrentUser currentUser) {
+    public CampaignServiceImpl(CampaignRepository campaignRepository, MonsterService monsterService) {
         this.campaignRepository = campaignRepository;
         this.monsterService = monsterService;
-        this.currentUser = currentUser;
     }
 
     @Override

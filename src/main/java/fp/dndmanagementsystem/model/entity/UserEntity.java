@@ -24,6 +24,15 @@ public class UserEntity extends BaseEntity {
     @OneToMany(mappedBy = "dungeonMaster")
     private List<CampaignEntity> managedCampaigns;
 
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private List<UserRoleEntity> roles = new ArrayList<>();
+
     public UserEntity() {
         this.characters = new ArrayList<>();
         this.campaigns = new ArrayList<>();
@@ -61,4 +70,15 @@ public class UserEntity extends BaseEntity {
     public void setManagedCampaigns(List<CampaignEntity> managedCampaigns) {
         this.managedCampaigns = managedCampaigns;
     }
+
+    public List<UserRoleEntity> getRoles() {
+        return roles;
+    }
+
+    public UserEntity setRoles(List<UserRoleEntity> roles) {
+        this.roles = roles;
+        return this;
+    }
+
+    //TODO to String maybe
 }
