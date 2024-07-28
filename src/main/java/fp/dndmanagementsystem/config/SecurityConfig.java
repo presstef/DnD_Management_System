@@ -22,13 +22,15 @@ public class SecurityConfig {
                                         //without log in
                                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                                         .requestMatchers("/", "/users/login", "/users/register", "/campaigns/all").permitAll()
+//                                        .requestMatchers("/admin/**").hasRole("ADMIN")
+//                                        .requestMatchers("/user/**").hasRole("USER")
                                         .anyRequest()
                                         .authenticated()
                 )
                 .formLogin(formLogin ->
                         formLogin
                                 .loginPage("/users/login")
-                                .usernameParameter("username")
+                                .usernameParameter("name")
                                 .passwordParameter("password")
                                 .defaultSuccessUrl("/", true)
                                 .failureForwardUrl("/users/login-error")
