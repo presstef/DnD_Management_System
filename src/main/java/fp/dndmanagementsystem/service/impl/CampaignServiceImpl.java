@@ -6,25 +6,40 @@ import fp.dndmanagementsystem.model.dto.CampaignSummaryDTO;
 import fp.dndmanagementsystem.model.entity.CampaignEntity;
 import fp.dndmanagementsystem.repo.CampaignRepository;
 import fp.dndmanagementsystem.service.MonsterService;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import fp.dndmanagementsystem.service.CampaignService;
+import org.springframework.web.client.RestClient;
 
 import java.util.List;
 
 @Service
-public class CampaignServiceImpl implements CampaignService{
+public class CampaignServiceImpl implements CampaignService {
 
+    private Logger LOGGER = LoggerFactory.getLogger(CampaignServiceImpl.class);
+    private final RestClient campaignRestClient;
     private final CampaignRepository campaignRepository;
     private final MonsterService monsterService;
 
-    public CampaignServiceImpl(CampaignRepository campaignRepository, MonsterService monsterService) {
+    public CampaignServiceImpl(@Qualifier("campaignsRestClient") RestClient campaignRestClient, CampaignRepository campaignRepository, MonsterService monsterService) {
+        this.campaignRestClient = campaignRestClient;
         this.campaignRepository = campaignRepository;
         this.monsterService = monsterService;
     }
 
     @Override
-    public long createCampaign(AddCampaignDTO addCampaignDTO) {
-        return campaignRepository.save(map(addCampaignDTO)).getId();
+    public void createCampaign(AddCampaignDTO addCampaignDTO) {
+        LOGGER.info("Creating new campaign...");
+
+        campaignRestClient
+                .post()
+                .uri("http://localhost:8081/campaigns")
+                .body(addCampaignDTO)
+                .retrieve();
     }
 
     @Override
@@ -34,47 +49,23 @@ public class CampaignServiceImpl implements CampaignService{
 
     @Override
     public CampaignDetailsDTO getCampaignDetails(Long id) {
-        return this.campaignRepository
-                .findById(id)
-                .map(this::toCampaignDetails)
-                .orElseThrow();
+        return campaignRestClient
+                .get()
+                .uri("http://localhost:8081/campaigns/{id}", id)
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .body(CampaignDetailsDTO.class);
     }
 
     @Override
     public List<CampaignSummaryDTO> getAllCampaignsSummary() {
-        return campaignRepository
-                .findAll()
-                .stream()
-                .map(CampaignServiceImpl::toCampaignSummary)
-                .toList();
-    }
-
-    private static CampaignSummaryDTO toCampaignSummary(CampaignEntity campaignEntity) {
-        // todo use mapping library
-        return new CampaignSummaryDTO(campaignEntity.getId(),
-                campaignEntity.getDescription());
-    }
-
-
-    private CampaignDetailsDTO toCampaignDetails(CampaignEntity campaignEntity) {
-        // todo use mapping library
-        return new CampaignDetailsDTO(campaignEntity.getId(),
-                campaignEntity.getName(),
-                campaignEntity.getDescription(),
-                campaignEntity.getDungeonMaster(),
-                campaignEntity.getCharacters(),
-                campaignEntity.getMonsters()
-        );
-    }
-
-    private static CampaignEntity map(AddCampaignDTO addCampaignDTO) {
-        // todo - use mapped (e.g. ModelMapper)
-        CampaignEntity ce = new CampaignEntity();
-        ce.setName(addCampaignDTO.name());
-        ce.setDescription(addCampaignDTO.description());
-        //TODO loggedInUser
-        //ce.setDungeonMaster();
-
-        return ce;
+        LOGGER.info("Get all offers...");
+        return campaignRestClient
+                .get()
+                .uri("http://localhost:8081/campaigns")
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .body(new ParameterizedTypeReference<>() {
+                });
     }
 }

@@ -22,7 +22,7 @@ spring:
       ddl-auto: update
   sql:
     init:
-      mode: never
+      mode: always
   mvc:
     hiddenmethod:
       filter:
@@ -38,3 +38,8 @@ spring:
 dnd5eapi:
   api:
     url: "https://www.dnd5eapi.co/api"
+
+#TODO capaignS?
+campaign:
+  api:
+    baseUrl: "http://localhost:8081"

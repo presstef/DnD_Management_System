@@ -10,8 +10,7 @@ import fp.dndmanagementsystem.model.entity.MonsterEntity;
 import fp.dndmanagementsystem.repo.MonsterRepository;
 import fp.dndmanagementsystem.service.MonsterService;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
@@ -28,7 +27,7 @@ public class MonsterServiceImpl implements MonsterService {
     private final RestClient restClient;
     private final DnD5eApiConfig dnd5eApiConfig;
 
-    public MonsterServiceImpl(MonsterRepository monsterRepository, RestClient restClient, DnD5eApiConfig dnd5eApiConfig) {
+    public MonsterServiceImpl(MonsterRepository monsterRepository, @Qualifier("genericRestClient") RestClient restClient, DnD5eApiConfig dnd5eApiConfig) {
         this.monsterRepository = monsterRepository;
         this.restClient = restClient;
         this.dnd5eApiConfig = dnd5eApiConfig;

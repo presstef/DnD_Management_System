@@ -8,7 +8,7 @@ import java.util.List;
 
 
 public interface CampaignService {
-    long createCampaign(AddCampaignDTO addCampaignDTO);
+    void createCampaign(AddCampaignDTO addCampaignDTO);
 
     void deleteCampaign(long campaignId);
 

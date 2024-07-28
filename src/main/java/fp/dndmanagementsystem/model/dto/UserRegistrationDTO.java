@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Size;
 public class UserRegistrationDTO {
     @NotEmpty
     @Size(min = 5, max = 20)
-    private String username;
+    private String name;
 
     @NotEmpty
     private String password;
@@ -19,18 +19,18 @@ public class UserRegistrationDTO {
         this.password = password;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername (String username) {
-        this.username = username;
+    public void setName (String name) {
+        this.name = name;
     }
 
     @Override
     public String toString() {
         return "UserRegistrationDTO{" +
-                "username='" + username + '\'' +
+                "username='" + name + '\'' +
                 ", password='" + (password == null ? "N/A" : "[PROVIDED]") + '\'' +
                 '}';
     }

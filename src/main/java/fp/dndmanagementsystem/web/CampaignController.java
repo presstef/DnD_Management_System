@@ -8,22 +8,19 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Controller
 @RequestMapping("/campaigns")
 public class CampaignController {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(CampaignController.class);
     private final CampaignService campaignService;
 
     public CampaignController(CampaignService campaignService) {
         this.campaignService = campaignService;
     }
-
-    //TODO model attribute for the relations
-//    @ModelAttribute("allEngineTypes")
-//    public EngineTypeEnum[] allEngineTypes() {
-//        return EngineTypeEnum.values();
-//    }
 
     @GetMapping("/add")
     public String newCampaign(Model model) {
@@ -48,9 +45,8 @@ public class CampaignController {
         }
 
 
-        long newCampaignId = campaignService.createCampaign(addCampaignDTO);
-
-        return "redirect:/campaigns/" + newCampaignId;
+        campaignService.createCampaign(addCampaignDTO);
+        return "redirect:/campaigns/all";
     }
 
     @GetMapping("/{id}")
