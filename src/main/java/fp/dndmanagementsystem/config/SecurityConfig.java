@@ -19,8 +19,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
                         authorizeRequests ->
                                 authorizeRequests
+                                        //without log in
                                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                                        .requestMatchers("/", "/users/login", "/users/register").permitAll()
+                                        .requestMatchers("/", "/users/login", "/users/register", "/campaigns/all").permitAll()
                                         .anyRequest()
                                         .authenticated()
                 )

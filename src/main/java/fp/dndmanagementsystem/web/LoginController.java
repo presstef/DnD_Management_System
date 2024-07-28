@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/users")
 public class LoginController {
 
+    //TODO login instead of index??
     @GetMapping("/login")
-    public String login() {
+    public String index() {
         return "login";
     }
 }

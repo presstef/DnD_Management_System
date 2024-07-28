@@ -11,6 +11,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+import java.util.List;
+
 public class DnDUserDetailsService implements UserDetailsService {
     private final UserRepository userRepository;
 
@@ -32,7 +34,7 @@ public class DnDUserDetailsService implements UserDetailsService {
         return new DnDUserDetails(
                 userEntity.getName(),
                 userEntity.getPassword(),
-                userEntity.getRoles().stream().map(UserRoleEntity::getRole).map(DnDUserDetailsService::map).toList()//,
+                List.of(map(userEntity.getRole().getRole())) //,
 //                userEntity.getCharacters(),
 //                userEntity.getCampaigns(),
 //                userEntity.getManagedCampaigns()

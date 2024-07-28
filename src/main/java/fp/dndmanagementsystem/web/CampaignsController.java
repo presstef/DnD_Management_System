@@ -19,14 +19,7 @@ public class CampaignsController {
 
     @GetMapping("/all")
     public String getAllCampaigns(Model model) {
-        try {
             model.addAttribute("allCampaigns", campaignService.getAllCampaignsSummary());
-        } catch (Exception e) {
-            System.err.println("Error fetching campaigns: " + e.getMessage());
-            model.addAttribute("errorMessage", "Unable to retrieve campaigns. Please try again later.");
-            //TODO fix
-            return "campaigns"; // Redirect to a generic error page
-        }
         return "campaigns";
     }
 

@@ -4,7 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ConfigurationProperties(prefix = "campaign.api")
+@ConfigurationProperties(prefix = "campaigns.api")
 public class CampaignApiConfig {
     private String baseUrl;
 
