@@ -17,8 +17,8 @@ public class LoginController {
         return "login";
     }
 
-//    @PostMapping("/login")
-//    public String home() {
-//        return "redirect:/";
-//    }
+    @GetMapping("/logout")
+    public String home() {
+        return "redirect:/";
+    }
 }

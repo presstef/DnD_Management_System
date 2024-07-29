@@ -3,6 +3,7 @@ package fp.dndmanagementsystem.web;
 import fp.dndmanagementsystem.model.dto.AddCampaignDTO;
 import fp.dndmanagementsystem.service.CampaignService;
 import jakarta.validation.Valid;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -32,7 +33,7 @@ public class CampaignController {
         return "campaign-add";
     }
 
-    @PostMapping("add")
+    @PostMapping("/add")
     public String createCampaign(
             @Valid AddCampaignDTO addCampaignDTO,
             BindingResult bindingResult,

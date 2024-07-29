@@ -59,7 +59,7 @@ public class CampaignServiceImpl implements CampaignService {
 
     @Override
     public List<CampaignSummaryDTO> getAllCampaignsSummary() {
-        LOGGER.info("Get all offers...");
+        LOGGER.info("Get all campaigns...");
         return campaignRestClient
                 .get()
                 .uri("http://localhost:8081/campaigns")

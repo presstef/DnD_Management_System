@@ -22,8 +22,7 @@ public class SecurityConfig {
                                         //without log in
                                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                                         .requestMatchers("/", "/users/login", "/users/register", "/campaigns/all").permitAll()
-//                                        .requestMatchers("/admin/**").hasRole("ADMIN")
-//                                        .requestMatchers("/user/**").hasRole("USER")
+                                        .requestMatchers("/admin/**").hasRole("ADMIN")
                                         .anyRequest()
                                         .authenticated()
                 )
