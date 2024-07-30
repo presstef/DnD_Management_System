@@ -1,27 +1,25 @@
-package fp.dndmanagementsystem.model.entity;
+package fp.dndmanagementsystem.model.dto;
 
-import jakarta.persistence.*;
+import fp.dndmanagementsystem.model.entity.CharacterEntity;
+import jakarta.persistence.Column;
+import jakarta.persistence.ManyToMany;
 
-import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name="items")
-public class ItemEntity extends BaseEntity {
-
-    @Column(length=1000)
+public class ItemsDTO {
+    private String name;
     private String description;
-
     private String category;
-
-    @ManyToMany(mappedBy =  "items")
-    private List<CharacterEntity> characters;
-
     private String cost;
     private double weight;
 
-    public ItemEntity() {
-        characters = new ArrayList<>();
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -40,18 +38,6 @@ public class ItemEntity extends BaseEntity {
         this.category = category;
     }
 
-    public List<CharacterEntity> getCharacters() {
-        return characters;
-    }
-
-    public void setCharacters(List<CharacterEntity> characters) {
-        this.characters = characters;
-    }
-
-    public String getCost() {
-        return cost;
-    }
-
     public void setCost(String cost) {
         this.cost = cost;
     }
@@ -62,5 +48,9 @@ public class ItemEntity extends BaseEntity {
 
     public void setWeight(double weight) {
         this.weight = weight;
+    }
+
+    public String getCost() {
+        return cost;
     }
 }

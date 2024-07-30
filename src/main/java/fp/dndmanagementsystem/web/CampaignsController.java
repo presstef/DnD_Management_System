@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/campaigns")
 public class CampaignsController {
 
-    private final CampaignService campaignService;
-
-    public CampaignsController(CampaignService campaignService) {
-        this.campaignService = campaignService;
-    }
-
-    @GetMapping("/all")
-    public String getAllCampaigns(Model model) {
-            model.addAttribute("allCampaigns", campaignService.getAllCampaignsSummary());
-        return "campaigns";
-    }
+//    private final CampaignService campaignService;
+//
+//    public CampaignsController(CampaignService campaignService) {
+//        this.campaignService = campaignService;
+//    }
+//
+//    @GetMapping("/all")
+//    public String getAllCampaigns(Model model) {
+//            model.addAttribute("allCampaigns", campaignService.getAllCampaignsSummary());
+//        return "campaigns";
+//    }
 
 }

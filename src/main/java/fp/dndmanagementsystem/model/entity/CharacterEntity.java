@@ -8,20 +8,12 @@ import java.util.List;
 @Entity
 @Table(name="characters")
 public class CharacterEntity extends BaseEntity{
-    @Column(nullable = false)
     private String race;
-
-    @Column(nullable = false)
     private String characterClass;
-
     private String characterSubClass;
-
     private int level;
-
     private int hp;
-
     private double money;
-
     private int armorClass;
     private int speed;
     private int strength;
@@ -52,17 +44,17 @@ public class CharacterEntity extends BaseEntity{
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
-    @ManyToMany
-    @JoinTable(
-            name = "characters_campaigns",
-            joinColumns = @JoinColumn(name = "character_id"),
-            inverseJoinColumns = @JoinColumn(name = "campaign_id")
-    )
-    private List<CampaignEntity> campaigns;
+//    @ManyToMany
+//    @JoinTable(
+//            name = "characters_campaigns",
+//            joinColumns = @JoinColumn(name = "character_id"),
+//            inverseJoinColumns = @JoinColumn(name = "campaign_id")
+//    )
+//    private List<CampaignEntity> campaigns;
 
-    public CharacterEntity() {
-        campaigns=new ArrayList<>();
-    }
+//    public CharacterEntity() {
+//        campaigns=new ArrayList<>();
+//    }
 
     public UserEntity getUser() {
         return user;
@@ -72,11 +64,11 @@ public class CharacterEntity extends BaseEntity{
         this.user = user;
     }
 
-    public List<CampaignEntity> getCampaigns() {
-        return campaigns;
-    }
-
-    public void setCampaigns(List<CampaignEntity> campaigns) {
-        this.campaigns = campaigns;
-    }
+//    public List<CampaignEntity> getCampaigns() {
+//        return campaigns;
+//    }
+//
+//    public void setCampaigns(List<CampaignEntity> campaigns) {
+//        this.campaigns = campaigns;
+//    }
 }

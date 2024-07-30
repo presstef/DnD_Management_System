@@ -1,43 +1,41 @@
-package fp.dndmanagementsystem.model.entity;
-
-import jakarta.persistence.*;
+package fp.dndmanagementsystem.model.dto;
 
 import java.util.ArrayList;
-import java.util.List;
 
-@Entity
-@Table(name="spells")
-public class SpellEntity extends BaseEntity{
 
-    @Column(length=1000)
+public class SpellsDTO {
+    private String name;
     private String description;
     private boolean concentration;
     private int level;
    // private String range;
+   // @JsonProperty("attack_type")
     private String attack_type;
+  //  @JsonProperty("casting_type")
     private String casting_time;
 
-    @ManyToMany(mappedBy = "spells")
-    private List<CharacterEntity> characters;
+    public String getName() {
+        return name;
+    }
 
-    public SpellEntity() {
-        characters = new ArrayList<>();
+    public void setName(String name) {
+        this.name = name;
     }
 
     public boolean isConcentration() {
         return concentration;
     }
 
-    public String getDescription() {
-        return description;
+    public void setConcentration(boolean concentration) {
+        this.concentration = concentration;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public void setConcentration(boolean concentration) {
-        this.concentration = concentration;
+    public String getDescription() {
+        return description;
     }
 
     public int getLevel() {
@@ -64,12 +62,4 @@ public class SpellEntity extends BaseEntity{
         this.casting_time = casting_time;
     }
 
-    public List<CharacterEntity> getCharacters() {
-        return characters;
-    }
-
-    public void setCharacters(List<CharacterEntity> characters) {
-        this.characters = characters;
-    }
 }
-

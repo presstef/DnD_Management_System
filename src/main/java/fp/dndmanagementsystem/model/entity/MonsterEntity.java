@@ -7,7 +7,7 @@ import java.util.List;
 @Entity
 @Table(name="monsters")
 public class MonsterEntity extends BaseEntity {
-
+//TODO fix names with camelCase
     private String type;
     private String size;
     private String alignment;

@@ -2,7 +2,7 @@ package fp.dndmanagementsystem.model.dto;
 
 import jakarta.persistence.Column;
 
-//TODO
+//TODO jason property
 public class MonstersDTO {
     private String name;
     private String type;

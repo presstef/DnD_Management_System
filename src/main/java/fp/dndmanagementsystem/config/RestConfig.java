@@ -1,12 +1,8 @@
 package fp.dndmanagementsystem.config;
-import fp.dndmanagementsystem.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
-import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.web.client.RestClient;
-
-import java.util.Map;
 
 @Configuration
 public class RestConfig {
@@ -15,11 +11,11 @@ public class RestConfig {
         return RestClient.create();
     }
 
-    @Bean("campaignsRestClient")
-    public RestClient campaignsRestClient(CampaignApiConfig campaignApiConfig) {
+    @Bean("boonsRestClient")
+    public RestClient boonRestClient(BoonApiConfig boonApiConfig) {
         return RestClient
                 .builder()
-                .baseUrl(campaignApiConfig.getBaseUrl())
+                .baseUrl(boonApiConfig.getBaseUrl())
                 .defaultHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
                 .build();
     }

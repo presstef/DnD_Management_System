@@ -39,6 +39,6 @@ dnd5eapi:
   api:
     url: "https://www.dnd5eapi.co/api"
 
-campaigns:
+boons:
   api:
     baseUrl: "http://localhost:8081"
