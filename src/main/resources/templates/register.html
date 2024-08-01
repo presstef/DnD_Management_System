@@ -1,66 +1,44 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8">
-  <title>Mythic Mastery</title>
-  <link rel="stylesheet" href="/css/reset-css.css"/>
-  <link rel="stylesheet" href="/css/bootstrap.min.css"/>
-  <link rel="stylesheet" type="text/css" href="/css/main.css"/>
-  <script src="/js/jquery-3.5.1.slim.min.js"></script>
-  <script src="/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mythic Mastery - Register</title>
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </head>
 
 <body>
 
-<div th:replace="~{fragments/navbar::navbar(activeLink=${'register'})}"></div>
+<header>
+  <div th:replace="~{fragments/navbar :: nav(active=${'register'})}"></div>
+</header>
 
-<div class="container">
+<main class="hero">
   <h2 class="text-center text-white">Register User</h2>
-  <form th:method="post"
-        th:action="@{/users/register}"
-        th:object="${registerData}"
-        class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center">
-    <div class="row">
-      <div class="form-group col-md-6 mb-3">
-        <label th:for="name" class="text-white font-weight-bold">Username</label>
-        <input  th:field="*{name}"
-                type="text"
-                class="form-control"
-                placeholder="Name"/>
-        <!--                <p class="errors alert alert-danger">-->
-        <!--                    First name is required.-->
-        <!--                </p>-->
+  <div class="form-center">
+    <form th:method="post" th:action="@{/users/register}" th:object="${registerData}" class="form mx-auto">
+      <div class="form-group mb-3">
+        <label th:for="name" class="text-white font-bold">Username:</label>
+        <input th:field="*{name}" type="text" class="form-control" placeholder="Username"/>
+        <!-- <p class="error alert alert-danger">First name is required.</p> -->
       </div>
-    </div>
-    <div class="row">
-      <div class="form-group col-md-6 mb-3">
-        <label th:for="password" class="text-white font-weight-bold">Password</label>
-        <input
-                th:field="*{password}"
-                type="password"
-                class="form-control"
-                placeholder="Password"/>
-        <!--                <p class="errors alert alert-danger">-->
-        <!--                    Password is required.-->
-        <!--                </p>-->
+      <div class="form-group mb-3">
+        <label th:for="password" class="text-white font-bold">Password:</label>
+        <input th:field="*{password}" type="password" class="form-control" placeholder="Password"/>
+        <!-- <p class="error alert alert-danger">Password is required.</p> -->
       </div>
-    </div>
+      <div class="btn-holder d-flex justify-content-center">
+        <input type="submit" class="btn btn-main btn-lg auth-button" value="Sign Up"/>
+      </div>
+    </form>
+  </div>
+</main>
 
-    <div class="row">
-      <div class="col col-md-4">
-        <div class="button-holder d-flex">
-          <input type="submit" class="btn btn-info btn-lg" value="sign in"/>
-        </div>
-      </div>
-    </div>
-  </form>
-</div>
-
-<div>
-  <footer> </footer>
-</div>
+<footer>
+  <p class="text-center text-white">&copy; 2024 Mythic Mastery. All rights reserved.</p>
+</footer>
 
 </body>
 </html>

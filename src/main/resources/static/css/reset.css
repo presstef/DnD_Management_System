@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    color: #fff;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    background-image: url('/images/backgroundRedDragon.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
+}

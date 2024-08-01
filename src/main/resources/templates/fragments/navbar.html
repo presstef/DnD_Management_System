@@ -1,89 +1,50 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mythic Mastery</title>
-    <link rel="stylesheet" href="/css/reset-css.css"/>
-    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
-    <script src="/js/jquery-3.5.1.slim.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+<!--    TODO reset-->
+<!--    <link rel="stylesheet" href="/css/reset.css"/>-->
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </head>
-
 <body>
 
-<div th:fragment="navbar(activeLink)">
-
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto col-12 justify-content-between">
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/}"
-                       th:classappend="${activeLink == 'home'}? 'active'">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link"
-                       th:href="@{/campaigns/all}"
-                       th:classappend="${activeLink == 'all-campaigns'}? 'active'"
-                       th:text="#{nav_bar_all_campaigns}">All Campaigns</a>
-                </li>
-<!--                <li class="nav-item dropdown" sec: sec:authorize="hasRole('ADMIN')">-->
-<!--                    <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button"-->
-<!--                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--                        Admin-->
-<!--                    </a>-->
-<!--                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-<!--                        <a class="dropdown-item" href="/">Action</a>-->
-<!--                        <a class="dropdown-item" href="/">Another action</a>-->
-<!--                        <div class="dropdown-divider"></div>-->
-<!--                        <a class="dropdown-item" href="/">Something else here</a>-->
-<!--                    </div>-->
-<!--                </li>-->
-
-                <li class="nav-item" sec:authorize="!isAuthenticated()">
-                    <a class="nav-link" th:href="@{/users/register}"
-                       th:classappend="${activeLink == 'register'}? 'active'"
-                       th:text="#{nav_bar_login_register}">Register</a>
-                </li>
-                <li class="nav-item" sec:authorize="!isAuthenticated()">
-                    <a class="nav-link" th:href="@{/users/login}"
-                       th:classappend="${activeLink == 'login'}? 'active'"
-                       th:text="#{nav_bar_login}">
-                        Login
-                    </a>
-                </li>
-
-                <li class="nav-item" sec:authorize="isAuthenticated()">
-                    <div class="form-inline my-2 my-lg-0 border px-3">
-                        <div class="logged-user"
-                             text="Welcome, Gosho"></div>
-                        <form th:method="post"
-                              th:action="@{/users/logout}">
-                            <input class="btn btn-link" type="submit" value="Logout"/>
-                        </form>
-                    </div>
-                </li>
-
-                <li class="nav-item">
+<header th:fragment="navbar(activeLink)">
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a th:href="@{/}" th:classappend="${activeLink == 'index'}? 'activeLink'">Home</a></li>
+            <li class="dropdown">
+                <a href="#adventures" class="dropdown-toggle">Adventures</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#races">Races</a></li>
+                    <li><a href="#classes">Classes</a></li>
+                    <li><a href="#spells">Spells</a></li>
+                    <li><a href="#items">Items</a></li>
+                    <li><a th:href="@{/monsters}" th:classappend="${activeLink == 'monsters'}? 'activeLink'">Monsters</a></li>
+                </ul>
+            </li>
+            <li><a th:href="@{/campaigns/all}" th:classappend="${activeLink == 'campaigns'}? 'activeLink'">Campaigns</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+<!--            <li sec:authorize="!isAuthenticated()"><a th:href="@{/users/register}" th:classappend="${activeLink == 'register'}? 'activeLink'">Register</a></li>-->
+<!--            <li sec:authorize="!isAuthenticated()"><a th:href="@{/users/login}" th:classappend="${activeLink == 'login'}? 'activeLink'">Login</a></li>-->
+            <li class="lang-dropdown">
                     <form th:method="get">
-                        <label class="text-white" for="lang" th:text="#{nav_bar_language}">Language</label>
-                        <select
-                                id="lang"
-                                name="lang"
-                                onchange="this.form.submit()">
-                            <option value="en_US" th:selected="${#locale.toString()} == 'en_US'">English</option>
-                            <option value="bg_BG" th:selected="${#locale.toString()} == 'bg_BG'">Български</option>
+                        <label for="lang" th:text="#{nav_bar_language}">Lang</label>
+                        <select id="lang" name="lang" onchange="this.form.submit()">
+                            <option value="en_US" th:selected="${#locale.toString()} == 'en_US'">EN</option>
+                            <option value="bg_BG" th:selected="${#locale.toString()} == 'bg_BG'">BG</option>
                         </select>
                     </form>
+            </li>
+        </ul>
 
-                </li>
-
-            </ul>
-        </div>
     </nav>
-
-</div>
+</header>
+<footer>
+    <p>&copy; 2024 Fantasy Kingdom. All rights reserved.</p>
+</footer>
 
 </body>
 </html>

@@ -1,0 +1,384 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    color: #fff;
+    background: url('/images/backgroundRedDragon.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+header {
+    background: rgba(0, 0, 0, 0.8);
+    color: #d4af37; /* Gold-like color */
+    padding: 1rem;
+    border-bottom: 2px solid #d4af37;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+    position: relative;
+}
+
+.navbar {
+    background: rgba(0, 0, 0, 0.7);
+    border-bottom: 2px solid #d4af37;
+    position: relative;
+    width: 100%;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0.75rem 0; /* Increased padding for more space */
+    margin: 0;
+}
+
+.nav-links li {
+    margin: 0 1.5rem; /* Increased margin for more space between items */
+    position: relative;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #d4af37;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #e0d0a0;
+}
+
+.nav-links .activeLink {
+    color: #e0d0a0; /* Color for the active link */
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid #d4af37;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+
+.dropdown-menu li {
+    margin: 0;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #d4af37;
+    text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+    background: rgba(0, 0, 0, 0.8);
+    color: #e0d0a0;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/*lang dropdown menu*/
+.lang-dropdown {
+    margin-right: 2em; /* Pushes it to the right */
+}
+
+/* Language dropdown styles */
+.lang-dropdown form {
+    display: flex;
+    align-items: center;
+}
+
+/*.lang-dropdown label {*/
+/*    margin-right: 10px; !* Space between label and dropdown *!*/
+/*}*/
+
+/*form {*/
+/*    display: inline;*/
+/*}*/
+
+/*form select {*/
+/*    background: rgba(0, 0, 0, 0.8);*/
+/*    border: 1px solid #d4af37;*/
+/*    color: #d4af37;*/
+/*    padding: 0.5rem;*/
+/*    font-size: 1rem;*/
+/*    border-radius: 6px;*/
+/*}*/
+
+/*form select option {*/
+/*    background: rgba(0, 0, 0, 0.9);*/
+/*}*/
+/* Form Styles */
+/*.form-reg-container {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    height: 80vh; !* Adjust as needed *!*/
+/*    background: rgba(0, 0, 0, 0.7); !* Semi-transparent black background *!*/
+/*    backdrop-filter: blur(10px); !* Blurred background effect *!*/
+/*    padding: 20px;*/
+/*}*/
+.form-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 2em;
+}
+.form {
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid #d4af37;
+    color: #d4af37;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.form-group input:focus {
+    border-color: #ffcc00;
+    outline: none;
+}
+
+/* Hero Section */
+.hero {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    color: #e0d0a0;
+}
+
+.auth-links {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Features Section */
+.features {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.feature {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #d4af37;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    flex: 1;
+    min-width: 200px;
+}
+
+.feature h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: #d4af37;
+}
+
+.feature p {
+    font-size: 1.1rem;
+    color: #e0d0a0;
+}
+
+/* Footer */
+footer {
+    background: rgba(0, 0, 0, 0.8);
+    color: #d4af37;
+    text-align: center;
+    padding: 1.5rem;
+    border-top: 2px solid #d4af37;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        padding: 1rem 0;
+    }
+
+    .nav-links li {
+        margin: 0.75rem 0;
+    }
+
+    .dropdown-menu {
+        width: 100%;
+        left: 0;
+    }
+
+    .dropdown-menu a {
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+
+    .features {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feature {
+        width: 90%;
+        max-width: 550px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-links a {
+        font-size: 1rem;
+    }
+
+    .dropdown-menu a {
+        font-size: 0.9rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .features {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feature {
+        width: 90%;
+        max-width: 450px;
+    }
+}
+
+/*hero message and buttons*/
+/* Custom message in the hero section */
+.hero-text {
+    color: #fff; /* White text color for readability */
+    text-align: center; /* Center the text */
+    padding: 2rem; /* Add padding around the text */
+    background: rgba(0, 0, 0, 0.6); /* Slightly darker semi-transparent background */
+    border-radius: 8px; /* Rounded corners for the text container */
+    display: inline-block; /* Align the block with the content */
+    max-width: 80%; /* Limit the width of the text block */
+    margin: 0 auto; /* Center the text block horizontally */
+}
+
+.hero-text h1 {
+    font-family: 'Playfair Display', serif; /* Custom font for heading */
+    font-size: 2.5rem; /* Font size for the heading */
+    margin-bottom: 1rem; /* Margin below the heading */
+}
+
+.hero-text p {
+    font-size: 1.2rem; /* Font size for the paragraph */
+    margin-bottom: 2rem; /* Margin below the paragraph */
+}
+
+/* Styling for buttons */
+/* General button styles to match site aesthetics */
+.auth-links {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center; /* Center items horizontally */
+}
+
+.auth-button {
+    text-decoration: none;
+    text-align: center;
+    display: inline-block; /* Align with text and other elements */
+    color: #f4f1e6; /* Light cream */
+    background: #8e5a3c; /* Warm brown color */
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    margin: 0 0.5rem;
+    font-family: 'Georgia', serif;
+    font-size: 1rem;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.auth-button:hover {
+    background: #d4af37; /* Gold */
+    color: #fff; /* White text */
+}
+
+/* Logout button specific styles */
+.btn-logout {
+    background: #dc3545; /* Red background for logout button */
+}
+
+.btn-logout:hover {
+    background: #c82333; /* Darker red on hover */
+    transform: scale(1.05); /* Slightly larger on hover */
+}

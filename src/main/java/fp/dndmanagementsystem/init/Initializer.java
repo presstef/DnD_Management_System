@@ -16,20 +16,20 @@ public class Initializer implements CommandLineRunner {
     private final MonsterService monsterService;
     private final SpellService spellService;
     private final ItemService itemService;
-    private final BoonService boonService;
+   // private final BoonService boonService;
     //TODO classes and races
 
 
-    public Initializer(MonsterService monsterService, SpellService spellService, ItemService itemService, BoonService boonService) {
+    public Initializer(MonsterService monsterService, SpellService spellService, ItemService itemService/*, BoonService boonService*/) {
         this.monsterService = monsterService;
         this.spellService = spellService;
         this.itemService = itemService;
-        this.boonService = boonService;
+     //   this.boonService = boonService;
     }
 
     @Override
     public void run(String... args) throws IOException {
-       BoonDTO boon =  boonService.getRandomBoon();
+      // BoonDTO boon =  boonService.getRandomBoon();
         if (!monsterService.hasInitializedMonsters()) {
             monsterService.updateMonsters(
                     monsterService.fetchMonsters()
