@@ -2,13 +2,13 @@ package fp.dndmanagementsystem.service.impl;
 
 
 import fp.dndmanagementsystem.config.DnD5eApiConfig;
-import fp.dndmanagementsystem.model.dto.*;
 
+import fp.dndmanagementsystem.model.dto.monster.MonsterResponseDTO;
+import fp.dndmanagementsystem.model.dto.monster.MonsterResponseResultsDTO;
+import fp.dndmanagementsystem.model.dto.monster.MonstersDTO;
 import fp.dndmanagementsystem.model.entity.BaseEntity;
 import fp.dndmanagementsystem.model.entity.MonsterEntity;
-import fp.dndmanagementsystem.model.entity.SpellEntity;
 import fp.dndmanagementsystem.repo.MonsterRepository;
-import fp.dndmanagementsystem.repo.SpellRepository;
 import fp.dndmanagementsystem.service.MonsterService;
 
 import org.modelmapper.ModelMapper;
@@ -30,7 +30,7 @@ public class MonsterServiceImpl implements MonsterService {
     private final RestClient restClient;
     private final DnD5eApiConfig dnd5eApiConfig;
 
-    public MonsterServiceImpl(ModelMapper modelMapper, MonsterRepository monsterRepository, SpellRepository spellRepository, @Qualifier("genericRestClient") RestClient restClient, DnD5eApiConfig dnd5eApiConfig) {
+    public MonsterServiceImpl(ModelMapper modelMapper, MonsterRepository monsterRepository, @Qualifier("genericRestClient") RestClient restClient, DnD5eApiConfig dnd5eApiConfig) {
         this.modelMapper = modelMapper;
         this.monsterRepository = monsterRepository;
         this.restClient = restClient;
@@ -45,8 +45,6 @@ public class MonsterServiceImpl implements MonsterService {
                 .map(BaseEntity::getName)
                 .toList();
     }
-
-
 
     @Override
     public boolean hasInitializedMonsters() {

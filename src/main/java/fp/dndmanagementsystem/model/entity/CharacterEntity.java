@@ -1,6 +1,8 @@
 package fp.dndmanagementsystem.model.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +42,8 @@ public class CharacterEntity extends BaseEntity{
     )
     private List<ItemEntity> items;
 
+    @Setter
+    @Getter
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity user;
@@ -56,15 +60,7 @@ public class CharacterEntity extends BaseEntity{
 //        campaigns=new ArrayList<>();
 //    }
 
-    public UserEntity getUser() {
-        return user;
-    }
-
-    public void setUser(UserEntity user) {
-        this.user = user;
-    }
-
-//    public List<CampaignEntity> getCampaigns() {
+    //    public List<CampaignEntity> getCampaigns() {
 //        return campaigns;
 //    }
 //

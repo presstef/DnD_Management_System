@@ -2,9 +2,9 @@ package fp.dndmanagementsystem.service.impl;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import fp.dndmanagementsystem.config.DnD5eApiConfig;
-import fp.dndmanagementsystem.model.dto.SpellResponseDTO;
-import fp.dndmanagementsystem.model.dto.SpellResponseResultsDTO;
-import fp.dndmanagementsystem.model.dto.SpellsDTO;
+import fp.dndmanagementsystem.model.dto.spell.SpellResponseDTO;
+import fp.dndmanagementsystem.model.dto.spell.SpellResponseResultsDTO;
+import fp.dndmanagementsystem.model.dto.spell.SpellsDTO;
 import fp.dndmanagementsystem.model.entity.SpellEntity;
 import fp.dndmanagementsystem.model.mapper.SpellMapper;
 import fp.dndmanagementsystem.repo.SpellRepository;

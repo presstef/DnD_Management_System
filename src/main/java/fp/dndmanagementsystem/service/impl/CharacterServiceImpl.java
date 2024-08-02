@@ -1,10 +1,10 @@
 package fp.dndmanagementsystem.service.impl;
 
-import fp.dndmanagementsystem.model.dto.CharacterDTO;
+import fp.dndmanagementsystem.model.dto.character.AddCharacterDTO;
+import fp.dndmanagementsystem.model.dto.character.CharacterDTO;
 import fp.dndmanagementsystem.model.entity.CharacterEntity;
 import fp.dndmanagementsystem.repo.CharacterRepository;
 import fp.dndmanagementsystem.service.CharacterService;
-import lombok.Setter;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +19,8 @@ public class CharacterServiceImpl implements CharacterService {
     }
 
     @Override
-    public void createCharacter(CharacterDTO characterDTO) {
-        CharacterEntity character = modelMapper.map(characterDTO, CharacterEntity.class);
+    public void createCharacter(AddCharacterDTO addCharacterDTO) {
+        CharacterEntity character = modelMapper.map(addCharacterDTO, CharacterEntity.class);
         characterRepository.save(character);
     }
 

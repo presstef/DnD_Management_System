@@ -4,124 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mythic Mastery - Login</title>
-    <link rel="stylesheet" href="/css/reset.css"/>
+<!--    <link rel="stylesheet" href="/css/reset.css"/>-->
     <link rel="stylesheet" type="text/css" href="/css/style.css"/>
-    <style>
-        body {
-            font-family: 'Raleway', sans-serif;
-            background: url('/path/to/your/blurred-background.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: #ffffff;
-        }
-        header {
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.7);
-        }
-        .login-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: calc(100vh - 60px); /* Adjust based on header/footer height */
-            padding: 20px;
-        }
-        .login-box {
-            background: rgba(0, 0, 0, 0.8); /* Slightly opaque background */
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            width: 100%;
-            max-width: 400px;
-        }
-        .title {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 24px;
-            font-weight: 600;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .form-control {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #333;
-            color: #fff;
-        }
-        .btn-holder {
-            text-align: center;
-        }
-        .btn {
-            background-color: #007bff; /* Blue color */
-            border: none;
-            color: #fff;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 10px 2px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .btn-main {
-            background-color: #007bff; /* Match button color */
-        }
-        .btn-main:hover {
-            background-color: #0056b3; /* Darker shade on hover */
-        }
-        footer {
-            padding: 10px;
-            background-color: rgba(0, 0, 0, 0.7);
-            text-align: center;
-            color: #ffffff;
-        }
-    </style>
 </head>
 <body>
 
-<header>
-    <div th:replace="~{fragments/navbar :: navbar(activeLink=${'login'})}"></div>
-</header>
 
-<main class="login-container">
-    <div class="login-box">
-        <h2 class="title">Login</h2>
-        <form th:method="post" th:action="@{/users/login}" class="login-form">
-            <div class="form-group">
-                <label th:for="name" class="label">Username</label>
-                <input id="name"
-                       name="username"
-                       type="text"
-                       class="form-control"
-                       placeholder="Username"
-                       required/>
-            </div>
-            <div class="form-group">
-                <label th:for="password" class="label">Password</label>
-                <input id="password"
-                       th:field="*{password}"
-                       name="password"
-                       type="password"
-                       class="form-control"
-                       placeholder="Password"
-                       required/>
-            </div>
-            <div class="btn-holder">
-                <input type="submit" class="btn btn-main" value="Log In"/>
-            </div>
-        </form>
-    </div>
+    <div th:replace="~{fragments/navbar :: navbar(activeLink=${'login'})}"></div>
+
+<main class="hero">
+    <h2 class="text-center text-white">Login</h2>
+        <div class="form-center">
+            <form th:method="post" th:action="@{/users/login}" class="form mx-auto">
+                <div class="form-group mb-3">
+                    <label th:for="name" class="text-white font-bold">Username:</label>
+                    <input id="name"
+                           name="username"
+                           type="text"
+                           class="form-control"
+                           placeholder="Username"
+                           required/>
+                </div>
+                <div class="form-group mb-3">
+                    <label th:for="password" class="text-white font-bold">Password:</label>
+                    <input id="password"
+                           name="password"
+                           type="password"
+                           class="form-control"
+                           placeholder="Password"
+                           required/>
+                </div>
+                <div class="btn-holder d-flex justify-content-center">
+                    <input type="submit" class="btn btn-main btn-lg auth-button" value="Log In"/>
+                </div>
+            </form>
+        </div>
 </main>
 
 <footer class="footer">
-    <p>&copy; 2024 Mythic Mastery. All rights reserved.</p>
+    <p class="text-center text-white">&copy; 2024 Mythic Mastery. All rights reserved.</p>
 </footer>
 
 </body>

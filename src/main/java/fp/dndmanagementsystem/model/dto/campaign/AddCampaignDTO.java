@@ -1,6 +1,5 @@
-package fp.dndmanagementsystem.model.dto;
+package fp.dndmanagementsystem.model.dto.campaign;
 
-import fp.dndmanagementsystem.model.entity.UserEntity;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -11,8 +10,7 @@ public record AddCampaignDTO (
         @NotNull(message = "{add.campaign.description.length}")
         @Size(message = "{add.campaign.description.length}",
                 min = 5,
-                max = 500) String description/*,
-        @NotEmpty UserEntity dungeonMaster*/)
+                max = 500) String description)
 {
         public static AddCampaignDTO empty() {
             return new AddCampaignDTO(null, null/*, null*/);

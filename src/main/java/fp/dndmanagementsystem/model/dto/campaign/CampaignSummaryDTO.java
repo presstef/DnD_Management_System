@@ -1,4 +1,4 @@
-package fp.dndmanagementsystem.model.dto;
+package fp.dndmanagementsystem.model.dto.campaign;
 
 public record CampaignSummaryDTO(Long id,
                                  String name

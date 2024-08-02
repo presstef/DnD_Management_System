@@ -3,8 +3,7 @@ package fp.dndmanagementsystem.model.mapper;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import fp.dndmanagementsystem.model.dto.ItemsDTO;
-import fp.dndmanagementsystem.model.dto.SpellsDTO;
+import fp.dndmanagementsystem.model.dto.item.ItemsDTO;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -2,9 +2,7 @@ package fp.dndmanagementsystem.model.mapper;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import fp.dndmanagementsystem.model.dto.SpellsDTO;
-import org.hibernate.validator.resourceloading.AggregateResourceBundleLocator;
+import fp.dndmanagementsystem.model.dto.spell.SpellsDTO;
 import org.springframework.stereotype.Service;
 
 @Service

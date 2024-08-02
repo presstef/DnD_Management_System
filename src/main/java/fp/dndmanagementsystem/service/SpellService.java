@@ -1,6 +1,6 @@
 package fp.dndmanagementsystem.service;
 
-import fp.dndmanagementsystem.model.dto.SpellsDTO;
+import fp.dndmanagementsystem.model.dto.spell.SpellsDTO;
 
 import java.util.List;
 

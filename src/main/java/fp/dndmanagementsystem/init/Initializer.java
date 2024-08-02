@@ -1,7 +1,5 @@
 package fp.dndmanagementsystem.init;
 
-import fp.dndmanagementsystem.model.dto.BoonDTO;
-import fp.dndmanagementsystem.service.BoonService;
 import fp.dndmanagementsystem.service.ItemService;
 import fp.dndmanagementsystem.service.MonsterService;
 import fp.dndmanagementsystem.service.SpellService;

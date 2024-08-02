@@ -1,23 +1,13 @@
 package fp.dndmanagementsystem.service.impl;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import fp.dndmanagementsystem.model.dto.AddCampaignDTO;
 import fp.dndmanagementsystem.model.dto.BoonDTO;
-import fp.dndmanagementsystem.model.dto.CampaignDetailsDTO;
-import fp.dndmanagementsystem.model.dto.CampaignSummaryDTO;
-import fp.dndmanagementsystem.repo.CampaignRepository;
 import fp.dndmanagementsystem.service.BoonService;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import fp.dndmanagementsystem.service.CampaignService;
 import org.springframework.web.client.RestClient;
-
-import java.util.List;
 
 @Service
 public class BoonServiceImpl implements BoonService {

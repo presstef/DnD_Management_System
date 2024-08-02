@@ -1,8 +1,8 @@
 package fp.dndmanagementsystem.service;
 
-import fp.dndmanagementsystem.model.dto.AddCampaignDTO;
-import fp.dndmanagementsystem.model.dto.CampaignDetailsDTO;
-import fp.dndmanagementsystem.model.dto.CampaignSummaryDTO;
+import fp.dndmanagementsystem.model.dto.campaign.AddCampaignDTO;
+import fp.dndmanagementsystem.model.dto.campaign.CampaignDetailsDTO;
+import fp.dndmanagementsystem.model.dto.campaign.CampaignSummaryDTO;
 
 import java.util.List;
 

@@ -1,6 +1,4 @@
-package fp.dndmanagementsystem.model.dto;
-
-import java.util.ArrayList;
+package fp.dndmanagementsystem.model.dto.spell;
 
 
 public class SpellsDTO {

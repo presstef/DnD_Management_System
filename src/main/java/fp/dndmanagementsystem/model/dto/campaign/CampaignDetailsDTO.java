@@ -1,10 +1,4 @@
-package fp.dndmanagementsystem.model.dto;
-
-import fp.dndmanagementsystem.model.entity.CharacterEntity;
-import fp.dndmanagementsystem.model.entity.MonsterEntity;
-import fp.dndmanagementsystem.model.entity.UserEntity;
-
-import java.util.List;
+package fp.dndmanagementsystem.model.dto.campaign;
 
 public record CampaignDetailsDTO(Long id,
                                 String name,

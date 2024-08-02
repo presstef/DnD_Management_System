@@ -1,4 +1,4 @@
-package fp.dndmanagementsystem.model.dto;
+package fp.dndmanagementsystem.model.dto.item;
 
 import java.util.List;
 

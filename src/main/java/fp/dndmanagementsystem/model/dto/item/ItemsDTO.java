@@ -1,10 +1,4 @@
-package fp.dndmanagementsystem.model.dto;
-
-import fp.dndmanagementsystem.model.entity.CharacterEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.ManyToMany;
-
-import java.util.List;
+package fp.dndmanagementsystem.model.dto.item;
 
 public class ItemsDTO {
     private String name;

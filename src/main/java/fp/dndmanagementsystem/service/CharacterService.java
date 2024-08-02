@@ -1,9 +1,10 @@
 package fp.dndmanagementsystem.service;
 
-import fp.dndmanagementsystem.model.dto.CharacterDTO;
+import fp.dndmanagementsystem.model.dto.character.AddCharacterDTO;
+import fp.dndmanagementsystem.model.dto.character.CharacterDTO;
 
 public interface CharacterService {
-    public void createCharacter(CharacterDTO character);
+    void createCharacter(AddCharacterDTO addCharacterDTO);
 
     void deleteCharacter(long id);
 

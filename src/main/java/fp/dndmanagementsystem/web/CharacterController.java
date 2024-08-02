@@ -1,6 +1,7 @@
 package fp.dndmanagementsystem.web;
 
-import fp.dndmanagementsystem.model.dto.CharacterDTO;
+import fp.dndmanagementsystem.model.dto.character.AddCharacterDTO;
+import fp.dndmanagementsystem.model.dto.character.CharacterDTO;
 import fp.dndmanagementsystem.service.CharacterService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -15,8 +16,8 @@ public class CharacterController {
     }
 
     @PostMapping("/add")
-    public void addCharacter(@RequestParam CharacterDTO characterDTO) {
-        characterService.createCharacter(characterDTO);
+    public void addCharacter(@RequestParam AddCharacterDTO addCharacterDTO) {
+        characterService.createCharacter(addCharacterDTO);
     }
 
     @DeleteMapping("/delete/{id}")

@@ -1,7 +1,6 @@
 package fp.dndmanagementsystem.service;
 
-import fp.dndmanagementsystem.model.dto.MonstersDTO;
-import fp.dndmanagementsystem.model.dto.SpellsDTO;
+import fp.dndmanagementsystem.model.dto.monster.MonstersDTO;
 
 import java.util.List;
 

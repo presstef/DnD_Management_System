@@ -1,5 +1,6 @@
 package fp.dndmanagementsystem.service.impl;
 
+import fp.dndmanagementsystem.model.dto.UserLoginDTO;
 import fp.dndmanagementsystem.model.dto.UserRegistrationDTO;
 import fp.dndmanagementsystem.model.entity.UserEntity;
 import fp.dndmanagementsystem.model.entity.UserRoleEntity;
@@ -12,6 +13,8 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -48,6 +51,15 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+   /* @Override
+    public void loginUser(UserLoginDTO userLogin) {
+            UserEntity user = this.modelMapper.map(userLogin, UserEntity.class);
+            Optional<UserEntity> userLoginAttempt = userRepository.findByName(user.getName());
+            String userLoginAttemptPass = this.passwordEncoder.encode(user.getPassword());
+            if(userLoginAttempt.isPresent() && userLoginAttemptPass.equals(user.getPassword())) {
+
+            }
+    }*/
 
 //    private UserEntity map(UserRegistrationDTO userRegistrationDTO) {
 //        UserEntity mappedEntity = modelMapper.map(userRegistrationDTO, UserEntity.class);

@@ -1,4 +1,4 @@
-package fp.dndmanagementsystem.model.dto;
+package fp.dndmanagementsystem.model.dto.character;
 
 import lombok.Getter;
 import lombok.Setter;
