@@ -1,49 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Mythic Mastery</title>
-    <link rel="stylesheet" href="/css/reset.css"/>
-
     <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-
 <div th:replace="~{fragments/navbar::navbar(activeLink=${'monsters'})}"></div>
 
-<div class="container-fluid">
-    <h2 class="text-center text-white mt-5">All Monsters</h2>
-    <div
-            th:each="monster  :${allMonsters}">
-        <!--                th:object="${campaign}">-->
-        class="offers row mx-auto d-flex flex-row justify-content-center">
-        <div class="offer card col-sm-6 col-md-3  col-lg-2 m-1 p-0">
-            <div class="card-img-top-wrapper">
-                <img class="card-img-top" src="/" alt="Car image">
-            </div>
-            <div class="card-body pb-1">
-                <h5 class="card-title">TODO: Name DM Characters Monsters</h5>
-            </div>
-            <ul class="offer-details list-group list-group-flush">
-                <li class="list-group-item">
-                    <div class="card-text">• Campaign Name <span th:text="*{monster.name()}">Name</span></div>
-                    <!--                    <div class="card-text">• DM <span id="price" th:text="*{c.dungeonMaster}">DM</span></div>-->
-                    <!--                    <div class="card-text">• Players <span th:text="*{c.characters}">Players</span></div>-->
-                    <!--                    <div class="card-text">• Monsters <span th:text="*{c.monsters}">Monsters</span></div>-->
-                </li>
-            </ul>
-            <div class="card-body">
-                <a class="card-link" th:href="@{/campaigns/{id}(id=*{campaign.id()})}">Details</a>
+<div class="hero">
+    <div class="hero-content">
+        <div class="hero-text">
+            <h1>All Monsters</h1>
+            <div class="card-container">
+                <div class="info-card" th:each="monster :${monsters}">
+                    <!-- Repeat this block for each monster -->
+                    <div class="card-header">
+                        <h2 th:text="${monster.getName()}">Monster Name</h2>
+                        <img th:src="@{${monster.getImage()}}" class="info-img" alt="Monster Image"/>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Type: <span th:text="${monster.getType()}">Type</span></li>
+                            <li>Size: <span th:text="${monster.getSize()}">Size</span></li>
+                            <li>Alignment: <span th:text="${monster.getAlignment()}">Alignment</span></li>
+                            <li>Hit Points: <span th:text="${monster.getHit_points()}">HP</span></li>
+                            <li>Strength: <span th:text="${monster.getStrength()}">Strength</span></li>
+                            <li>Dexterity: <span th:text="${monster.getDexterity()}">Dexterity</span></li>
+                            <li>Constitution: <span th:text="${monster.getConstitution()}">Constitution</span></li>
+                            <li>Intelligence: <span th:text="${monster.getIntelligence()}">Intelligence</span></li>
+                            <li>Wisdom: <span th:text="${monster.getWisdom()}">Wisdom</span></li>
+                            <li>Charisma: <span th:text="${monster.getCharisma()}">Charisma</span></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<div>
-    <footer> </footer>
-</div>
+<footer>
+    <p>&copy; 2024 Mythic Mastery. All rights reserved.</p>
+</footer>
 
 </body>
 </html>

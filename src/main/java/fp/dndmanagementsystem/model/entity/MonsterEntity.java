@@ -23,6 +23,7 @@ public class MonsterEntity extends BaseEntity {
     private int wisdom;
     private int charisma;
     //TODO image
+    private String image;
 
 //    @Column(name = "challenge_rating")
 //    private double challengeRating;
@@ -76,7 +77,14 @@ public class MonsterEntity extends BaseEntity {
         this.alignment = alignment;
     }
 
-//    public int getSpeed() {
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+    //    public int getSpeed() {
 //        return speed;
 //    }
 //

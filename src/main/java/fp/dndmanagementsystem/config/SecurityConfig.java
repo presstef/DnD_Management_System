@@ -21,8 +21,8 @@ public class SecurityConfig {
                                 authorizeRequests
                                         //without log in
                                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                                        .requestMatchers("/", "/users/login", "/users/register", "/campaigns/all").permitAll()
-                                        .requestMatchers("/admin/**").hasRole("ADMIN")
+                                        .requestMatchers("/", "/users/login", "/users/register", "/monsters").permitAll()
+                                       // .requestMatchers("/admin/**").hasRole("ADMIN")
                                         .anyRequest()
                                         .authenticated()
                 )

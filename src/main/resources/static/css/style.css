@@ -104,34 +104,7 @@ header {
 
 /*.lang-dropdown label {*/
 /*    margin-right: 10px; !* Space between label and dropdown *!*/
-/*}*/
-
-/*form {*/
-/*    display: inline;*/
-/*}*/
-
-/*form select {*/
-/*    background: rgba(0, 0, 0, 0.8);*/
-/*    border: 1px solid #d4af37;*/
-/*    color: #d4af37;*/
-/*    padding: 0.5rem;*/
-/*    font-size: 1rem;*/
-/*    border-radius: 6px;*/
-/*}*/
-
-/*form select option {*/
-/*    background: rgba(0, 0, 0, 0.9);*/
-/*}*/
-/* Form Styles */
-/*.form-reg-container {*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*    height: 80vh; !* Adjust as needed *!*/
-/*    background: rgba(0, 0, 0, 0.7); !* Semi-transparent black background *!*/
-/*    backdrop-filter: blur(10px); !* Blurred background effect *!*/
-/*    padding: 20px;*/
-/*}*/
+/*form*/
 .form-center {
     display: flex;
     justify-content: center;
@@ -344,6 +317,76 @@ footer {
 .hero-text p {
     font-size: 1.2rem; /* Font size for the paragraph */
     margin-bottom: 2rem; /* Margin below the paragraph */
+}
+
+/* Card Container */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.info-card {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 100%;
+    margin: 1rem;
+}
+
+.card-header {
+    background-color: #4a4a4a;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    flex: 1;
+}
+
+.card-header h2 {
+    margin: 0;
+}
+
+.info-img{
+    max-width: 100%;
+    height: auto;
+    border-radius: 1rem;
+    margin-top: 0.3rem;
+    max-height: 10rem; /* Limit the image height */
+    object-fit: cover; /* Ensures the image covers the space */
+}
+.card-body {
+    padding: 1rem;
+    flex: 2;
+    background-color: #cccccc;
+}
+
+.card-body ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.card-body li {
+    margin: 0.5rem 0;
+    font-size: 0.7rem;
+}
+
+.card-body span {
+    font-weight: lighter;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 /* Styling for buttons */

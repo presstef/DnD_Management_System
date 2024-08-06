@@ -23,8 +23,6 @@ import java.util.List;
 
 @Service
 public class MonsterServiceImpl implements MonsterService {
-    //TODO logger needed??
-  //  private final Logger LOGGER = LoggerFactory.getLogger(MonsterServiceImpl.class);
     private final ModelMapper modelMapper;
     private final MonsterRepository monsterRepository;
     private final RestClient restClient;
@@ -38,11 +36,11 @@ public class MonsterServiceImpl implements MonsterService {
     }
 
     @Override
-    public List<String> allAvailableMonsters() {
+    public List<MonstersDTO> getAllMonsters() {
         return monsterRepository
                 .findAll()
                 .stream()
-                .map(BaseEntity::getName)
+                .map(monster -> modelMapper.map(monster, MonstersDTO.class))
                 .toList();
     }
 
@@ -69,13 +67,13 @@ public class MonsterServiceImpl implements MonsterService {
                    .accept(MediaType.APPLICATION_JSON)
                    .retrieve()
                    .body(MonstersDTO.class);
+           if(fetchStatsResult.getImage() != null)
+               fetchStatsResult.setImage("https://www.dnd5eapi.co" + fetchStatsResult.getImage());
            monsters.add(fetchStatsResult);
        }
        return monsters;
     }
 
-
-    //TODO
     @Override
     public void updateMonsters(List<MonstersDTO> monsters) {
         if(!monsters.isEmpty()){

@@ -13,6 +13,7 @@ public class MonstersDTO {
     private int intelligence;
     private int wisdom;
     private int charisma;
+    private String image;
 
     public String getName() {
         return name;
@@ -100,5 +101,13 @@ public class MonstersDTO {
 
     public void setCharisma(int charisma) {
         this.charisma = charisma;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
