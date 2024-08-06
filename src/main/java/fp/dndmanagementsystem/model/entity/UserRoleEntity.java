@@ -28,7 +28,7 @@ public class UserRoleEntity {
         return role;
     }
 
-    public void setRole(@NotNull UserRoleEnum role) {
+    public void setRole(UserRoleEnum role) {
         this.role = role;
     }
 }

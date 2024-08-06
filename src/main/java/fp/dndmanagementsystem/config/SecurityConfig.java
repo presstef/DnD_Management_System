@@ -14,7 +14,7 @@ import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity, UserRepository userRepository) throws Exception {
         return  httpSecurity
                 .authorizeHttpRequests(
                         authorizeRequests ->
@@ -32,13 +32,14 @@ public class SecurityConfig {
                                 .usernameParameter("name")
                                 .passwordParameter("password")
                                 .defaultSuccessUrl("/", true)
-                                .failureForwardUrl("/users/login-error")
+                                .failureUrl("/users/login?error=true")
                 )
                 .logout(logout ->
                         logout
                                 .logoutUrl("/users/logout")
                                 .logoutSuccessUrl("/")
                                 .invalidateHttpSession(true)
+                                .deleteCookies("JSESSIONID")
                 )
                 .build();
     }
@@ -52,5 +53,7 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return Pbkdf2PasswordEncoder.defaultsForSpringSecurity_v5_8();
     }
+
+
 
 }

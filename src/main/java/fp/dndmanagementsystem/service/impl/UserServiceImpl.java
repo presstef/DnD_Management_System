@@ -51,15 +51,32 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-   /* @Override
-    public void loginUser(UserLoginDTO userLogin) {
-            UserEntity user = this.modelMapper.map(userLogin, UserEntity.class);
-            Optional<UserEntity> userLoginAttempt = userRepository.findByName(user.getName());
-            String userLoginAttemptPass = this.passwordEncoder.encode(user.getPassword());
-            if(userLoginAttempt.isPresent() && userLoginAttemptPass.equals(user.getPassword())) {
+    @Override
+    public void login(UserLoginDTO loginDTO) {
+        Optional<UserEntity> userOptional = userRepository.findByName(loginDTO.name());
+        if (userOptional.isPresent()) {
+            UserEntity user = userOptional.get();
+            if (passwordEncoder.matches(loginDTO.password(), user.getPassword())) {
+                // Authentication successful
+                // No need to implement this method further since Spring Security handles it
+                logger.info("User {} logged in successfully ", user.getName());
 
             }
-    }*/
+            else logger.info("WRONG CREDENTIALS");
+        }
+    }
+
+//    @Override
+//    public void loginUser(UserLoginDTO userLogin) {
+//        Optional<UserEntity> userOptional = userRepository.findByName(userLogin.name());
+//        if (userOptional.isPresent()) {
+//            UserEntity user = userOptional.get();
+//            if (passwordEncoder.matches(userLogin.password(), user.getPassword())) {
+//                // Authentication successful
+//                // No need to implement this method further since Spring Security handles it
+//            }
+//        }
+//    }
 
 //    private UserEntity map(UserRegistrationDTO userRegistrationDTO) {
 //        UserEntity mappedEntity = modelMapper.map(userRegistrationDTO, UserEntity.class);

@@ -3,9 +3,6 @@ package fp.dndmanagementsystem.model.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Entity
 @Table(name="users")
 public class UserEntity extends BaseEntity {
@@ -33,15 +30,7 @@ public class UserEntity extends BaseEntity {
 //        this.managedCampaigns = new ArrayList<>();
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-//    public List<CharacterEntity> getCharacters() {
+    //    public List<CharacterEntity> getCharacters() {
 //        return characters;
 //    }
 //
@@ -65,13 +54,20 @@ public class UserEntity extends BaseEntity {
 //        this.managedCampaigns = managedCampaigns;
 //    }
 
-    public UserRoleEntity getRole() {
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public @NotNull UserRoleEntity getRole() {
         return role;
     }
 
-    public void setRole(UserRoleEntity role) {
+    public void setRole(@NotNull UserRoleEntity role) {
         this.role = role;
     }
-
     //TODO to String maybe
 }

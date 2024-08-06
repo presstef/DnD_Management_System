@@ -30,20 +30,18 @@ public class DnDUserDetailsService implements UserDetailsService {
     }
 
     private static UserDetails map(UserEntity userEntity) {
-
         return new DnDUserDetails(
-                userEntity.getName(),
-                userEntity.getPassword(),
-                List.of(map(userEntity.getRole().getRole())) //,
+                userEntity.getName(), userEntity.getPassword(),
+                List.of(new SimpleGrantedAuthority("ROLE_" + userEntity.getRole().getRole()))
 //                userEntity.getCharacters(),
 //                userEntity.getCampaigns(),
 //                userEntity.getManagedCampaigns()
         );
     }
 
-    private static GrantedAuthority map(UserRoleEnum role) {
-        return new SimpleGrantedAuthority(
-                "ROLE_" + role
-        );
-    }
+//    private static GrantedAuthority map(UserRoleEnum role) {
+//        return new SimpleGrantedAuthority(
+//                "ROLE_" + role
+//        );
+//    }
 }

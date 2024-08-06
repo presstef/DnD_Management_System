@@ -26,8 +26,8 @@
                 <a sec:authorize="!isAuthenticated()" th:href="@{/users/login}" class="auth-button">Login</a>
             </div>
 
-            <form sec:authorize="isAuthenticated()" th:method="post" th:action="@{/users/logout}" class="logout-form auth-button">
-                <input type="submit" value="Logout" class="btn-logout"/>
+            <form sec:authorize="isAuthenticated()" th:method="post" th:action="@{/users/logout}" >
+                <input type="submit" value="Logout" class="auth-button"/>
             </form>
         </div>
 
