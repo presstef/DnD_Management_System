@@ -2,14 +2,12 @@ package fp.dndmanagementsystem.service.impl;
 
 import fp.dndmanagementsystem.model.dto.character.AddCharacterDTO;
 import fp.dndmanagementsystem.model.dto.character.CharacterDTO;
+import fp.dndmanagementsystem.model.dto.monster.MonstersDTO;
 import fp.dndmanagementsystem.model.entity.CharacterEntity;
-import fp.dndmanagementsystem.model.entity.SpellEntity;
 import fp.dndmanagementsystem.model.entity.UserEntity;
-import fp.dndmanagementsystem.model.user.DnDUserDetails;
 import fp.dndmanagementsystem.repo.CharacterRepository;
 import fp.dndmanagementsystem.repo.UserRepository;
 import fp.dndmanagementsystem.service.CharacterService;
-import fp.dndmanagementsystem.service.DnDUserDetailsService;
 import fp.dndmanagementsystem.service.SpellService;
 import fp.dndmanagementsystem.service.UserService;
 import org.modelmapper.ModelMapper;
@@ -26,33 +24,30 @@ public class CharacterServiceImpl implements CharacterService {
    private final CharacterRepository characterRepository;
       private final UserRepository userRepository;
       private final SpellService spellService;
+      private final UserService userService;
 
 
-    public CharacterServiceImpl(ModelMapper modelMapper, CharacterRepository characterRepository, UserRepository userRepository, SpellService spellService) {
+    public CharacterServiceImpl(ModelMapper modelMapper, CharacterRepository characterRepository, UserRepository userRepository, SpellService spellService, UserService userService) {
         this.modelMapper = modelMapper;
         this.characterRepository = characterRepository;
         this.userRepository = userRepository;
-     //   this.dndUserDetails = dndUserDetails;
-       // this.dnDUserDetailsService = dnDUserDetailsService;
         this.spellService = spellService;
+        this.userService = userService;
     }
 
     @Override
     public void createCharacter(AddCharacterDTO characterDTO) {
-//        UserEntity currUser = getCurrentUserId();
-      //  characterDTO.setUser(currUser);
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        // DnDUserDetails dnDUserDetails = (DnDUserDetails) authentication.getPrincipal();
-        Optional<UserEntity> currUser = userRepository.findByName(authentication.getName());
+
+        UserEntity currUser = userService.getCurrentUser();
 
         CharacterEntity character = modelMapper.map(characterDTO, CharacterEntity.class);
-        character.setUser(currUser.get());
+        character.setUser(currUser);
         characterRepository.save(character);
     }
 
     @Override
-    public void getAllCharactersByUsername(String username) {
-
+    public List<CharacterEntity> getAllCharactersByUser(UserEntity user) {
+        return characterRepository.getAllByUser(user);
     }
 
     @Override
@@ -63,9 +58,15 @@ public class CharacterServiceImpl implements CharacterService {
     //TODO
     @Override
     public void updateCharacter(long id, CharacterDTO characterDTO) {
-        characterRepository.findById(id).ifPresent(character -> {
-            modelMapper.map(characterDTO, character);
-        });
+        CharacterEntity character = characterRepository.findById(id).get();
+        modelMapper.map(characterDTO, character);
+        character.setUser(userService.getCurrentUser());
+        characterRepository.save(character);
+    }
+
+    @Override
+    public CharacterDTO getCharacterById(long id) {
+        return modelMapper.map(characterRepository.findById(id).get(), CharacterDTO.class);
     }
 
 /*

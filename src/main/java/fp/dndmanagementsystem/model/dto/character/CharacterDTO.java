@@ -7,6 +7,7 @@ import fp.dndmanagementsystem.model.entity.UserEntity;
 import java.util.ArrayList;
 import java.util.List;
 public class CharacterDTO {
+    private Long id;
     private String name;
     private String race;
     private String characterClass;
@@ -22,12 +23,76 @@ public class CharacterDTO {
     private int wisdom;
     private int charisma;
 
-//    private List<SpellEntity> spells;
-//    private List<ItemEntity> items;
+    private List<SpellEntity> spells;
+    private List<ItemEntity> items;
     private UserEntity user;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public void setRace(String race) {
         this.race = race;
+    }
+
+    public String getRace() {
+        return race;
+    }
+
+    public String getCharacterClass() {
+        return characterClass;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public double getMoney() {
+        return money;
+    }
+
+    public int getArmorClass() {
+        return armorClass;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public int getDexterity() {
+        return dexterity;
+    }
+
+    public int getConstitution() {
+        return constitution;
+    }
+
+    public int getIntelligence() {
+        return intelligence;
+    }
+
+    public int getWisdom() {
+        return wisdom;
+    }
+
+    public int getCharisma() {
+        return charisma;
+    }
+
+    public UserEntity getUser() {
+        return user;
     }
 
     public void setCharacterClass(String characterClass) {
@@ -79,13 +144,21 @@ public class CharacterDTO {
         this.charisma = charisma;
     }
 
-//    public void setSpells(List<SpellEntity> spells) {
-//        this.spells = new ArrayList<>();
-//    }
-//
-//    public void setItems(List<ItemEntity> items) {
-//        this.items = new ArrayList<>();
-//    }
+    public void setSpells(List<SpellEntity> spells) {
+        this.spells = spells;
+    }
+
+    public void setItems(List<ItemEntity> items) {
+        this.items = items;
+    }
+
+    public List<SpellEntity> getSpells() {
+        return spells;
+    }
+
+    public List<ItemEntity> getItems() {
+        return items;
+    }
 
     public void setUser(UserEntity user) {
         this.user = user;

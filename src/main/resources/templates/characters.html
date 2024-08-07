@@ -1,10 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Mythic Mastery</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 </head>
+
 <body>
+<div th:replace="~{fragments/navbar::navbar(activeLink=${'characters'})}"></div>
+
+<div class="hero">
+    <div class="hero-content">
+        <div class="hero-text">
+            <h1>All Characters</h1>
+            <div class="card-container">
+                <div class="info-card" th:each="character :${allCharacters}">
+                    <div class="card-header">
+                        <h2 th:text="${character.name}">Character Name</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Race: <span th:text="${character.race}">Race</span></li>
+                            <li>Class: <span th:text="${character.characterClass}">Class</span></li>
+                            <li>Level: <span th:text="${character.level}">Level</span></li>
+                            <li>Hit Points: <span th:text="${character.hp}">HP</span></li>
+                            <li>Money: <span th:text="${character.money}">Money</span></li>
+                            <li>Armor class: <span th:text="${character.armorClass}">Armor class</span></li>
+                            <li>Speed: <span th:text="${character.speed}">Speed</span></li>
+                            <li>Strength: <span th:text="${character.strength}">Strength</span></li>
+                            <li>Dexterity: <span th:text="${character.dexterity}">Dexterity</span></li>
+                            <li>Constitution: <span th:text="${character.constitution}">Constitution</span></li>
+                            <li>Intelligence: <span th:text="${character.intelligence}">Intelligence</span></li>
+                            <li>Wisdom: <span th:text="${character.wisdom}">Wisdom</span></li>
+                            <li>Charisma: <span th:text="${character.charisma}">Charisma</span></li>
+                            <li>Items: <span th:each="item : ${character.getItems()}"
+                                        th:text="${item.getName()}"
+                                             style="margin-right: 10px;"> </span>
+                            </li>
+                            <li>Spells: <span th:each="spell : ${character.getSpells()}"
+                                    th:text="${spell.getName()}"
+                                              style="margin-right: 10px;">
+                                Spells</span></li>
+                        </ul>
+                        <div  class="auth-links">
+                            <div class="btn-holder">
+                                <form th:method="get" th:action="@{/characters/update/{id}(id=*{character.id})}">
+                                    <input type="submit" class="auth-button" value="EDIT"/>
+                                </form>
+                            </div>
+                            <div class="btn-holder">
+                                <form th:method="delete" th:action="@{/characters/delete/{id}(id=*{character.id})}">
+                                    <input type="submit" class="auth-button" value="DELETE"/>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Mythic Mastery. All rights reserved.</p>
+</footer>
 
 </body>
 </html>

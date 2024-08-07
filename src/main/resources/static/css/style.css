@@ -150,27 +150,6 @@ header {
     outline: none;
 }
 
-/*checkboxes*/
-.checkbox-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 10px;
-}
-
-.checkbox-container input[type="checkbox"] {
-    margin-right: 5px;
-}
-
-.checkbox-container label {
-    margin-right: 15px; /* Adjust to control spacing between checkboxes */
-}
-
-.checkbox-container div {
-    display: flex;
-    align-items: center;
-}
-
 /* Hero Section */
 .hero {
     background: rgba(0, 0, 0, 0.7);
@@ -383,7 +362,7 @@ footer {
 .card-body {
     padding: 1rem;
     flex: 2;
-    background-color: #cccccc;
+    background-color: #949494;
 }
 
 .card-body ul {
@@ -395,7 +374,7 @@ footer {
 
 .card-body li {
     margin: 0.5rem 0;
-    font-size: 0.7rem;
+    font-size: .7rem;
 }
 
 .card-body span {

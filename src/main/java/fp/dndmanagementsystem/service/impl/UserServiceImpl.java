@@ -1,6 +1,5 @@
 package fp.dndmanagementsystem.service.impl;
 
-import fp.dndmanagementsystem.model.dto.UserLoginDTO;
 import fp.dndmanagementsystem.model.dto.UserRegistrationDTO;
 import fp.dndmanagementsystem.model.entity.UserEntity;
 import fp.dndmanagementsystem.model.entity.UserRoleEntity;
@@ -51,6 +50,13 @@ public class UserServiceImpl implements UserService {
             logger.error("Error registering user", e);
             throw new RuntimeException("Failed to register user", e);
         }
+    }
+
+    @Override
+    public UserEntity getCurrentUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Optional<UserEntity> currUser = userRepository.findByName(authentication.getName());
+        return currUser.get();
     }
 
 //    @Override
