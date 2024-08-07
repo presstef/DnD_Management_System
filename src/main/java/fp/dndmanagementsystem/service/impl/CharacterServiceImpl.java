@@ -3,18 +3,21 @@ package fp.dndmanagementsystem.service.impl;
 import fp.dndmanagementsystem.model.dto.character.AddCharacterDTO;
 import fp.dndmanagementsystem.model.dto.character.CharacterDTO;
 import fp.dndmanagementsystem.model.entity.CharacterEntity;
+import fp.dndmanagementsystem.model.entity.SpellEntity;
 import fp.dndmanagementsystem.model.entity.UserEntity;
 import fp.dndmanagementsystem.model.user.DnDUserDetails;
 import fp.dndmanagementsystem.repo.CharacterRepository;
 import fp.dndmanagementsystem.repo.UserRepository;
 import fp.dndmanagementsystem.service.CharacterService;
 import fp.dndmanagementsystem.service.DnDUserDetailsService;
+import fp.dndmanagementsystem.service.SpellService;
 import fp.dndmanagementsystem.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -22,14 +25,16 @@ public class CharacterServiceImpl implements CharacterService {
    private final ModelMapper modelMapper;
    private final CharacterRepository characterRepository;
       private final UserRepository userRepository;
+      private final SpellService spellService;
 
 
-    public CharacterServiceImpl(ModelMapper modelMapper, CharacterRepository characterRepository, UserRepository userRepository) {
+    public CharacterServiceImpl(ModelMapper modelMapper, CharacterRepository characterRepository, UserRepository userRepository, SpellService spellService) {
         this.modelMapper = modelMapper;
         this.characterRepository = characterRepository;
         this.userRepository = userRepository;
      //   this.dndUserDetails = dndUserDetails;
        // this.dnDUserDetailsService = dnDUserDetailsService;
+        this.spellService = spellService;
     }
 
     @Override
@@ -39,6 +44,7 @@ public class CharacterServiceImpl implements CharacterService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         // DnDUserDetails dnDUserDetails = (DnDUserDetails) authentication.getPrincipal();
         Optional<UserEntity> currUser = userRepository.findByName(authentication.getName());
+
         CharacterEntity character = modelMapper.map(characterDTO, CharacterEntity.class);
         character.setUser(currUser.get());
         characterRepository.save(character);

@@ -2,6 +2,7 @@ package fp.dndmanagementsystem.service.impl;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import fp.dndmanagementsystem.config.DnD5eApiConfig;
+import fp.dndmanagementsystem.model.dto.monster.MonstersDTO;
 import fp.dndmanagementsystem.model.dto.spell.SpellResponseDTO;
 import fp.dndmanagementsystem.model.dto.spell.SpellResponseResultsDTO;
 import fp.dndmanagementsystem.model.dto.spell.SpellsDTO;
@@ -34,13 +35,18 @@ public class SpellServiceImpl implements SpellService {
         this.spellMapper = spellMapper;
     }
 
+
     @Override
-    public List<String> getAllSpellNames() {
+    public List<SpellEntity> getAllSpells() {
         return spellRepository
                 .findAll()
                 .stream()
-                .map(SpellEntity::getName)
                 .toList();
+    }
+
+    @Override
+    public List<SpellEntity> getSpellsByLevel(int level) {
+        return spellRepository.findByLevel(level);
     }
 
     @Override

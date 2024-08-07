@@ -5,6 +5,7 @@ import fp.dndmanagementsystem.config.DnD5eApiConfig;
 import fp.dndmanagementsystem.model.dto.item.ItemResponseDTO;
 import fp.dndmanagementsystem.model.dto.item.ItemResponseResultsDTO;
 import fp.dndmanagementsystem.model.dto.item.ItemsDTO;
+import fp.dndmanagementsystem.model.dto.monster.MonstersDTO;
 import fp.dndmanagementsystem.model.entity.BaseEntity;
 import fp.dndmanagementsystem.model.entity.ItemEntity;
 import fp.dndmanagementsystem.model.mapper.ItemMapper;
@@ -37,11 +38,10 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public List<String> allAvailableItems() {
+    public List<ItemEntity> getAllItems() {
         return itemRepository
                 .findAll()
                 .stream()
-                .map(BaseEntity::getName)
                 .toList();
     }
 
@@ -89,5 +89,10 @@ public class ItemServiceImpl implements ItemService {
             });
         }
         //else  LOGGER.info("Monster DTO is null.");
+    }
+
+    @Override
+    public List<ItemEntity> findByIds(List<Long> itemIds) {
+        return itemRepository.findAllById(itemIds);
     }
 }

@@ -2,16 +2,18 @@ package fp.dndmanagementsystem.web;
 
 import fp.dndmanagementsystem.model.dto.character.AddCharacterDTO;
 import fp.dndmanagementsystem.model.dto.character.CharacterDTO;
-import fp.dndmanagementsystem.service.CharacterService;
-import fp.dndmanagementsystem.service.ClassService;
-import fp.dndmanagementsystem.service.RaceService;
-import fp.dndmanagementsystem.service.SpellService;
+import fp.dndmanagementsystem.model.dto.spell.SpellsDTO;
+import fp.dndmanagementsystem.model.entity.ItemEntity;
+import fp.dndmanagementsystem.model.entity.SpellEntity;
+import fp.dndmanagementsystem.service.*;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/characters")
@@ -20,12 +22,14 @@ public class CharacterController {
     private final SpellService spellService;
     private final ClassService characterClassService;
     private final RaceService raceService;
+    private final ItemService itemService;
 
-    public CharacterController(CharacterService characterService, SpellService spellService, ClassService characterClassService, RaceService raceService) {
+    public CharacterController(CharacterService characterService, SpellService spellService, ClassService characterClassService, RaceService raceService, ItemService itemService) {
         this.characterService = characterService;
         this.spellService = spellService;
         this.characterClassService = characterClassService;
         this.raceService = raceService;
+        this.itemService = itemService;
     }
 
 //    @PostMapping("/add")
@@ -52,8 +56,16 @@ public class CharacterController {
         model.addAttribute("addCharacterDTO", new AddCharacterDTO());
         model.addAttribute("characterClasses", characterClassService.getAllClasses());
         model.addAttribute("characterRaces", raceService.getAllRaces());
+        model.addAttribute("spells", spellService.getAllSpells());
+        model.addAttribute("items", itemService.getAllItems());
 
         return "characters-add";
+    }
+
+    @GetMapping("/characters/spells")
+    @ResponseBody
+    public List<SpellEntity> getSpellsByLevel(@RequestParam int level) {
+        return spellService.getSpellsByLevel(level);
     }
 
     @PostMapping("/add")

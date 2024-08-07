@@ -1,8 +1,12 @@
 package fp.dndmanagementsystem.model.dto.character;
 
 import fp.dndmanagementsystem.model.dto.item.ItemsDTO;
+import fp.dndmanagementsystem.model.dto.spell.SpellsDTO;
+import fp.dndmanagementsystem.model.entity.ItemEntity;
+import fp.dndmanagementsystem.model.entity.SpellEntity;
 import jakarta.validation.constraints.NotEmpty;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AddCharacterDTO {
@@ -20,8 +24,8 @@ public class AddCharacterDTO {
     private int intelligence;
     private int wisdom;
     private int charisma;
-    private List<String> items;
-    private List<String> spells;
+    private List<ItemEntity> items;
+    private List<SpellEntity> spells;
 
     public String getName() {
         return name;
@@ -135,19 +139,19 @@ public class AddCharacterDTO {
         this.charisma = charisma;
     }
 
-    public List<String> getItems() {
+    public List<ItemEntity> getItems() {
         return items;
     }
 
-    public void setItems(List<String> items) {
+    public void setItems(List<ItemEntity> items) {
         this.items = items;
     }
 
-    public List<String> getSpells() {
+    public List<SpellEntity> getSpells() {
         return spells;
     }
 
-    public void setSpells(List<String> spells) {
+    public void setSpells(List<SpellEntity> spells) {
         this.spells = spells;
     }
 }

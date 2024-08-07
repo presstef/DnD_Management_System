@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Character</title>
     <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+    <script src="/js/scriptJS.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -14,7 +15,7 @@
     <div th:replace="~{fragments/navbar :: nav(active=${'characters-add'})}"></div>
 </header>
 <main  class="hero">
-    <h2 class="text-center text-white">Create New Character</h2>
+    <h2 class="text-center">Create New Character</h2>
     <div class="form-center">
         <form th:action="@{/characters/add}" th:object="${addCharacterDTO}" th:method="post" class="form">
             <div class="form-group">
@@ -23,7 +24,7 @@
             </div>
             <div class="form-group">
                 <label for="race">Race</label>
-                <select id="race" th:field="*{race}">
+                <select id="race" th:field="*{race}"> Pls Select Race
                     <option th:each="race : ${characterRaces}" th:value="${race.name}" th:text="${race.name}"></option>
                 </select>
             </div>
@@ -80,14 +81,53 @@
                        th:field="*{charisma}" />
             </div>
             <div class="form-group">
-                <label for="lang">Spells</label>
-                        <select id="lang" name="lang" onchange="this.form.submit()"
-                                th:action="@{/characters/spells}">
-                            <option
-                            th:each="spell :${spells}"
-                                    value="*{spell.name}"
-                                    th:selected="${#locale.toString()} == 'en_US'"></option>
-                        </select>
+                <label for="item1">Item 1</label>
+                <select id="item1" th:field="*{items[0]}">
+                    <option th:each="item : ${items}" th:value="${item.id}" th:text="${item.name}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="item2">Item 2</label>
+                <select id="item2"  th:field="*{items[1]}">
+                    <option th:each="item : ${items}" th:value="${item.id}" th:text="${item.name}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="item3">Item 3</label>
+                <select id="item3" th:field="*{items[2]}">
+                    <option th:each="item : ${items}" th:value="${item.id}" th:text="${item.name}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="spell0">Spell 1 (catnip)</label>
+                <select id="spell0" th:field="*{spells[0]}">
+                    <option th:each="spell : ${spells}" th:if="${spell.level == 0}" th:value="${spell.id}" th:text="${spell.name}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="spell01">Spell 2 (catnip)</label>
+                <select id="spell01" th:field="*{spells[1]}">
+                    <option th:each="spell : ${spells}" th:if="${spell.level == 0}" th:value="${spell.id}" th:text="${spell.name}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="spell02">Spell 3 (catnip)</label>
+                <select id="spell02" th:field="*{spells[2]}">
+                    <option th:each="spell : ${spells}" th:if="${spell.level == 0}" th:value="${spell.id}" th:text="${spell.name}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="filteredSpells1">Spell 4 </label>
+                <select id="filteredSpells1" th:field="*{spells}">
+                    <option th:each="spell : ${spells}" th:if="${spell.level > 0}" th:value="${spell.id}" th:text="${spell.name}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="filteredSpells2">Spell 5 </label>
+                <select id="filteredSpells2" th:field="*{spells}" >
+                    <option th:each="spell : ${spells}"  th:if="${spell.level > 0}" th:value="${spell.id}" th:text="${spell.name}">
+                    </option>
+                </select>
             </div>
             <div class="btn-holder d-flex justify-content-center">
                 <button type="submit" class="btn btn-main btn-lg auth-button">Add Character</button>

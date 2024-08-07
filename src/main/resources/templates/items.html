@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <title>Mythic Mastery</title>
+  <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<div th:replace="~{fragments/navbar::navbar(activeLink=${'items'})}"></div>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1>All Items</h1>
+      <div class="card-container">
+        <div class="info-card" th:each="item :${items}">
+          <!-- Repeat this block for each monster -->
+          <div class="card-header">
+            <h2 th:text="${item.getName()}">Item Name</h2>
+          </div>
+          <div class="card-body">
+            <ul>
+              <li>Description: <span th:text="${item.getDescription()}">Description</span></li>
+              <li>Category: <span th:text="${item.getCategory()}">Category</span></li>
+              <li>Cost: <span th:text="${item.getCost()}">Cost</span></li>
+              <li>Weight: <span th:text="${item.getWeight()}">Weight</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2024 Mythic Mastery. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

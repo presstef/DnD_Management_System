@@ -9,24 +9,20 @@
 </head>
 
 <body>
-<div th:replace="~{fragments/navbar::navbar(activeLink=${'spells'})}"></div>
+<div th:replace="~{fragments/navbar::navbar(activeLink=${'classes'})}"></div>
 
 <div class="hero">
     <div class="hero-content">
         <div class="hero-text">
-            <h1>All Spells</h1>
+            <h1>All Classes</h1>
             <div class="card-container">
-                <div class="info-card" th:each="spell :${spells}">
+                <div class="info-card" th:each="class :${classes}">
                     <div class="card-header">
-                        <h2 th:text="${spell.getName()}">Spell Name</h2>
+                        <h2 th:text="${class.getName()}">Race Name</h2>
                     </div>
                     <div class="card-body">
                         <ul>
-                            <li>Description: <span th:text="${spell.getDescription()}">Description</span></li>
-                            <li>Concentration: <span th:text="${spell.isConcentration()}">Concentration</span></li>
-                            <li>Level: <span th:text="${spell.getLevel()}">Level</span></li>
-                            <li>Attack type: <span th:text="${spell.getAttack_type()}">Attack type</span></li>
-                            <li>Casting time: <span th:text="${spell.getCasting_time()}">Casting time</span></li>
+                            <li>Alignment: <span th:text="${class.getHit_die()}">Alignment</span></li>
                         </ul>
                     </div>
                 </div>

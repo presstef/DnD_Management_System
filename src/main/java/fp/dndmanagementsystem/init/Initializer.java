@@ -9,20 +9,20 @@ import java.io.IOException;
 @Component
 //@ConditionalOnProperty(name = "dnd5eapi.init-monsters", havingValue = "true")
 public class Initializer implements CommandLineRunner {
-   /* private final MonsterService monsterService;
+   /* private final MonsterService monsterService;*/
     private final SpellService spellService;
-    private final ItemService itemService;*/
+    private final ItemService itemService;
     private final RaceService raceService;
    // private final BoonService boonService;
     private final ClassService classService;
     //TODO classes and races
 
 
-    public Initializer(/*MonsterService monsterService, SpellService spellService, ItemService itemService,*/ RaceService raceService, ClassService classService/*, BoonService boonService*/) {
+    public Initializer(/*MonsterService monsterService,*/ SpellService spellService, ItemService itemService, RaceService raceService, ClassService classService/*, BoonService boonService*/) {
         this.classService = classService;
-       /* this.monsterService = monsterService;
+       /* this.monsterService = monsterService;*/
         this.spellService = spellService;
-        this.itemService = itemService;*/
+        this.itemService = itemService;
      //   this.boonService = boonService;
         this.raceService = raceService;
     }
@@ -34,7 +34,7 @@ public class Initializer implements CommandLineRunner {
             monsterService.updateMonsters(
                     monsterService.fetchMonsters()
             );
-        }
+        }*/
         if (!spellService.hasInitializedSpells()) {
             spellService.updateSpells(
                     spellService.fetchSpells()
@@ -44,7 +44,7 @@ public class Initializer implements CommandLineRunner {
             itemService.updateItems(
                     itemService.fetchItems()
             );
-        }*/
+        }
         if (!raceService.hasInitializedRaces()) {
             raceService.updateRaces(
                     raceService.fetchRaces()

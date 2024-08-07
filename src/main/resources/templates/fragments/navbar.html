@@ -18,9 +18,9 @@
                 <a href="#adventures" class="dropdown-toggle">Adventures</a>
                 <ul class="dropdown-menu">
                     <li><a th:href="@{/races}" th:classappend="${activeLink == 'races'}? 'activeLink'">Races</a></li>
-                    <li><a href="#classes">Classes</a></li>
-                    <li><a href="#spells">Spells</a></li>
-                    <li><a href="#items">Items</a></li>
+                    <li><a th:href="@{/classes}" th:classappend="${activeLink == 'classes'}? 'activeLink'">Classes</a></li>
+                    <li><a th:href="@{/spells}" th:classappend="${activeLink == 'spells'}? 'activeLink'">Spells</a></li>
+                    <li><a th:href="@{/items}" th:classappend="${activeLink == 'items'}? 'activeLink'">Items</a></li>
                     <li><a th:href="@{/monsters}" th:classappend="${activeLink == 'monsters'}? 'activeLink'">Monsters</a></li>
                 </ul>
             </li>

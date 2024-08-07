@@ -15,9 +15,10 @@ public class SpellsController {
     public SpellsController(SpellService spellService) {
         this.spellService = spellService;
     }
-//
-//    @GetMapping
-//    public Model getSpells(Model model) {
-//        return model.addAttribute("spells", spellService.getAllSpellNames());
-//    }
+
+    @GetMapping()
+    public String getAllSpells(Model model) {
+        model.addAttribute("spells", spellService.getAllSpells());
+        return "spells";
+    }
 }
