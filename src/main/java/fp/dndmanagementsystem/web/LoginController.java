@@ -23,9 +23,9 @@ public class LoginController {
     public String login() {
         return "login";
     }
-    public String doLogin(@Valid UserLoginDTO loginDTO) {
-        this.userService.login(loginDTO);
-        return "redirect:/users/home";
-    }
+//    public String doLogin(@Valid UserLoginDTO loginDTO) {
+//        this.userService.login(loginDTO);
+//        return "redirect:/users/home";
+//    }
 
 }

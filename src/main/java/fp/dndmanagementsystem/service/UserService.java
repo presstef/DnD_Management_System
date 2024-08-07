@@ -8,6 +8,6 @@ import java.util.Optional;
 public interface UserService {
     void registerUser(UserRegistrationDTO userRegistration);
 
-    void login(UserLoginDTO loginDTO);
+    //void login(UserLoginDTO loginDTO);
     //void loginUser(UserLoginDTO userLogin);
 }

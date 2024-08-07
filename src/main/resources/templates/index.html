@@ -37,6 +37,7 @@
     <div class="feature">
         <h2>Manage Characters</h2>
         <p>Effortlessly keep track of your heroes and their journeys.</p>
+        <a sec:authorize="isAuthenticated()" th:href="@{/characters/add}" class="auth-button">Create new character</a>
     </div>
     <div class="feature">
         <h2>Create Campaigns</h2>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Mythic Mastery</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<div th:replace="~{fragments/navbar::navbar(activeLink=${'spells'})}"></div>
+
+<div class="hero">
+    <div class="hero-content">
+        <div class="hero-text">
+            <h1>All Spells</h1>
+            <div class="card-container">
+                <div class="info-card" th:each="spell :${spells}">
+                    <!-- Repeat this block for each monster -->
+                    <div class="card-header">
+                        <h2 th:text="${monster.getName()}">Monster Name</h2>
+                        <img th:src="@{${monster.getImage()}}" class="info-img" alt="Monster Image"/>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Type: <span th:text="${monster.getType()}">Type</span></li>
+                            <li>Size: <span th:text="${monster.getSize()}">Size</span></li>
+                            <li>Alignment: <span th:text="${monster.getAlignment()}">Alignment</span></li>
+                            <li>Hit Points: <span th:text="${monster.getHit_points()}">HP</span></li>
+                            <li>Strength: <span th:text="${monster.getStrength()}">Strength</span></li>
+                            <li>Dexterity: <span th:text="${monster.getDexterity()}">Dexterity</span></li>
+                            <li>Constitution: <span th:text="${monster.getConstitution()}">Constitution</span></li>
+                            <li>Intelligence: <span th:text="${monster.getIntelligence()}">Intelligence</span></li>
+                            <li>Wisdom: <span th:text="${monster.getWisdom()}">Wisdom</span></li>
+                            <li>Charisma: <span th:text="${monster.getCharisma()}">Charisma</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Mythic Mastery. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

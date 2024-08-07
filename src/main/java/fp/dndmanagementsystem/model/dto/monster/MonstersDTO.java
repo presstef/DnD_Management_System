@@ -1,6 +1,5 @@
 package fp.dndmanagementsystem.model.dto.monster;
 
-//TODO jason property
 public class MonstersDTO {
     private String name;
     private String type;

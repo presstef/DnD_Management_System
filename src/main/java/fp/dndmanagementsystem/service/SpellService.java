@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface SpellService {
 
-    List<String> allAvailableSpells();
+    List<String> getAllSpellNames();
 
     boolean hasInitializedSpells();
 

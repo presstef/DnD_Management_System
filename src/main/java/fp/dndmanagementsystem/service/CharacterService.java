@@ -4,7 +4,8 @@ import fp.dndmanagementsystem.model.dto.character.AddCharacterDTO;
 import fp.dndmanagementsystem.model.dto.character.CharacterDTO;
 
 public interface CharacterService {
-    void createCharacter(AddCharacterDTO addCharacterDTO);
+    void createCharacter(AddCharacterDTO characterDTO);
+    void getAllCharactersByUsername(String username);
 
     void deleteCharacter(long id);
 

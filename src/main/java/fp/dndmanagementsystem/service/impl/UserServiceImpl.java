@@ -11,6 +11,8 @@ import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -51,39 +53,25 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    @Override
-    public void login(UserLoginDTO loginDTO) {
-        Optional<UserEntity> userOptional = userRepository.findByName(loginDTO.name());
-        if (userOptional.isPresent()) {
-            UserEntity user = userOptional.get();
-            if (passwordEncoder.matches(loginDTO.password(), user.getPassword())) {
-                // Authentication successful
-                // No need to implement this method further since Spring Security handles it
-                logger.info("User {} logged in successfully ", user.getName());
-
-            }
-            else logger.info("WRONG CREDENTIALS");
-        }
-    }
-
 //    @Override
-//    public void loginUser(UserLoginDTO userLogin) {
-//        Optional<UserEntity> userOptional = userRepository.findByName(userLogin.name());
+//    public void login(UserLoginDTO loginDTO) {
+//        Optional<UserEntity> userOptional = userRepository.findByName(loginDTO.name());
 //        if (userOptional.isPresent()) {
 //            UserEntity user = userOptional.get();
-//            if (passwordEncoder.matches(userLogin.password(), user.getPassword())) {
+//            if (passwordEncoder.matches(loginDTO.password(), user.getPassword())) {
 //                // Authentication successful
 //                // No need to implement this method further since Spring Security handles it
+//                getCurrentUserId();
+//                logger.info("User {} logged in successfully ", user.getName());
+//
 //            }
+//            else logger.info("WRONG CREDENTIALS");
 //        }
 //    }
-
-//    private UserEntity map(UserRegistrationDTO userRegistrationDTO) {
-//        UserEntity mappedEntity = modelMapper.map(userRegistrationDTO, UserEntity.class);
 //
-//        mappedEntity.setPassword(passwordEncoder.encode(userRegistrationDTO.getPassword()));
-//
-//        return mappedEntity;
+//    private void getCurrentUserId(){
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        System.out.println(((UserEntity) authentication.getPrincipal()).getId());
 //    }
 
 }

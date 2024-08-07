@@ -35,7 +35,7 @@ public class SpellServiceImpl implements SpellService {
     }
 
     @Override
-    public List<String> allAvailableSpells() {
+    public List<String> getAllSpellNames() {
         return spellRepository
                 .findAll()
                 .stream()
